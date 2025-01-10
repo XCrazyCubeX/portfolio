@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Joyren Terken Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/styling.css">
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/JT.png">
+    <!-- Include necessary scripts -->
+    <script src="scripts/cursor.js" defer></script>
+    <script src="scripts/loading.js" defer></script>
+    <script src="scripts/render.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="scripts/parralax.js"></script>
+
+    <!-- Navigation script -->
+    <script src="scripts/navigation.js" defer></script>
+</head>
+<body>
+    <!-- Background Effects -->
+    <div id="background-network"></div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <!-- <h1 id="loading-text">
+            LOADING NETWORK
+        </h1>
+        <h2 id="loading-dots">
+            <span class="loading-dot">.</span><span class="loading-dot">.</span><span class="loading-dot">.</span>
+        </h2> -->
+    </div>
+
+    <!-- Noise Effect -->
+    <div class="background-noise"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Header Section -->
+    <header class="header">
+        <a href="#" class="logo-link">
+            <img class="logo" id="logo" src="assets/images/JT_dark.png" alt="Joyren Terken Logo">
+        </a>
+
+        <div class="header-right">
+            <!-- Theme Switch -->
+            <a><div class="theme-switch">
+                <label class="toggle-switch">
+                    <input type="checkbox" onclick="toggleTheme()">
+                    <span class="slider round"></span>
+                </label>
+            </div></a>
+
+            <!-- Hamburger Menu -->
+            <a><div class="menu-icon" id="menu-icon">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </div></a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home-section" class="section active">
+
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <h1>
+                    Hi, I’m <span class="highlight-name">Joyren Terken</span>
+                </h1>
+                <h1>
+                    but you can call me <span class="highlight-nickname">Joy</span>
+                </h1>
+                <p class="hero-description">
+                    I’m a graphic designer, UX/UI designer, and developer specializing in artificial intelligence
+                </p>
+
+                <!-- Navigation Links -->
+                <nav class="navigation">
+                    <ul class="nav-list">
+                        <li><a href="#about-section" class="nav-link .about-link">About Me</a></li>
+                        <li><a class="nav-link .projects-link">My Projects</a></li>
+                    </ul>
+                </nav>
+            </section>
+        </section>
+
+        <!-- About Section -->
+        <!-- About Section -->
+        <section id="about-section" class="section">
+            <div class="title">
+            <h1 class="about-title">about me</h1>
+            </div>
+        
+            <div class="about-content-container">
+
+
+            <div class="skills-container">
+                <h1>skills</h1>
+
+                <!-- Each skill has a data-level attribute for its final width (e.g., 80%) -->
+                <p1>html</p1><div class="skill skill-1" data-level="80"></div>
+                <p1>css</p1><div class="skill skill-2" data-level="75"></div>
+                <p1>javascript</p1><div class="skill skill-3" data-level="50"></div>
+                <p1>reactjs</p1> <div class="skill skill-4" data-level="30"></div>
+                <p1>ui/ux</p1><div class="skill skill-5" data-level="80"></div>
+                <p1>Applied AI</p1><div class="skill skill-6" data-level="40"></div>
+                <p1>Hardware Engineering</p1><div class="skill skill-7" data-level="20"></div>
+
+
+            </div>
+
+
+            <div class="education-container pulse">
+                <img class="vista-logo " src="assets/images/vista_logo.png">
+
+                <!-- Hidden content initially -->
+                <div class="dropdown-content">
+                  <p1>I pursued a Software Developer MBO 4 program at Vista College,
+                     a four-year course that I successfully completed in just 2.5 years.
+                      During this intensive period, I developed a strong foundation in web development,
+                       mastering key programming languages and frameworks while building functional,
+                        user-friendly applications. Beyond technical skills, the program also
+                         enhanced my ability to communicate effectively, whether it 
+                         as collaborating with peers, presenting projects, or understanding client needs.
+                          This combination of technical expertise and interpersonal growth has prepared me to excel
+                          in the dynamic field of software development.
+                        </p1>
+                </div>
+              </div>
+              
+                                            
+                <div class="continual-learning">
+                    <a><p>always continual learning</p></a> 
+                </div>
+
+
+
+
+
+            </div>
+        </sec
+        
+        tion>
+        
+
+        <!-- Projects Section -->
+        <section id="projects-section" class="section">
+            <div class="about-title title">
+                <h2>SOME FUN SHIT I DID</h2>
+                <p>SEE MY WORK</p>
+
+
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact-section" class="section">
+            <div class="about-title title">
+                <h2>WANT TO REACH OUT?</h2>
+                <p>HERE ARE MY SOCIALS</p>
+                
+
+                <p></p>
+
+            </div>
+        </section>
+
+        <!-- Hamburger Menu Content -->
+        <div class="menu-overlay" id="menu-overlay">
+            <div class="menu-blur" id="menu-blur"></div>
+            <!-- Menu Items -->
+            <div class="menu-item item-1" id="nav-home" style="--i: 1;"><a>Home</a></div>
+            <div class="menu-item item-2" id="nav-about" style="--i: 2;">About</div>
+            <div class="menu-item item-3" id="nav-projects" style="--i: 3;">Projects</div>
+            <div class="menu-item item-4" id="nav-contact" style="--i: 4;">Contact</div>
+        </div>
+    </main>
+</body>
+</html>
