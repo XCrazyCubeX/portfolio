@@ -18,69 +18,32 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const heroSection = document.querySelector('.hero-section');
-    let currentSection = 'home'; // Track currently active section
 
-    function hideSection(sectionKey) {
-        const section = sections[sectionKey];
-        section.classList.remove('active');
-        section.style.visibility = 'hidden';
-    }
-
-    function showSection(sectionKey) {
-        const section = sections[sectionKey];
-        section.style.visibility = 'visible';
-        section.classList.add('active');
-    }
-
-    function slideOutElements() {
-        // If you have any slide-out animations for hero/nav when leaving home, trigger them here
-        heroSection.classList.add('animate-slide-out');
-    }
-
-    function slideInElements() {
-        // If you have any slide-in animations for hero/nav when arriving back home, trigger them here
-        heroSection.classList.remove('animate-slide-out');
-        heroSection.classList.add('animate-slide-in');
-    }
-
-    function handleMenuClick(targetSection) {
-        if (currentSection === targetSection) return;
-    
+    function scrollToSection(targetSection) {
         // Close the menu upon selection
         hamburger.classList.remove('active');
         overlay.classList.remove('active');
         blur.classList.remove('active');
-    
-        // Handle leaving home
-        if (currentSection === 'home' && targetSection !== 'home') {
-            // Slide out hero elements if desired
+
+        // Scroll to the target section
+        const section = sections[targetSection];
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Optional: Trigger animations when navigating to/from home
+        if (targetSection === 'home') {
+            setTimeout(slideInElements, 500);
+        } else if (heroSection) {
             slideOutElements();
         }
-    
-        // Handle returning to home
-        if (targetSection === 'home' && currentSection !== 'home') {
-            setTimeout(slideInElements, 500);
-        }
-    
-        // Hide current section and show target section after a short delay for animations
-        hideSection(currentSection);
-        setTimeout(() => {
-            showSection(targetSection);
-            currentSection = targetSection;
-    
-            // Update the 3D scene section
-            window.setCurrentSection(targetSection);
-    
-    
-        }, 500); // Match with your CSS animation duration
     }
-    
-    
+
     // Menu item event listeners
-    menuItems.home.addEventListener('click', () => handleMenuClick('home'));
-    menuItems.about.addEventListener('click', () => handleMenuClick('about'));
-    menuItems.projects.addEventListener('click', () => handleMenuClick('projects'));
-    menuItems.contact.addEventListener('click', () => handleMenuClick('contact'));
+    menuItems.home.addEventListener('click', () => scrollToSection('home'));
+    menuItems.about.addEventListener('click', () => scrollToSection('about'));
+    menuItems.projects.addEventListener('click', () => scrollToSection('projects'));
+    menuItems.contact.addEventListener('click', () => scrollToSection('contact'));
 
     // Hamburger menu toggle
     hamburger.addEventListener('click', () => {
@@ -88,4 +51,86 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.classList.toggle('active');
         blur.classList.toggle('active');
     });
+
+// Grab elements
+const projectItems = document.querySelectorAll(".project");
+const projects = document.querySelectorAll(".project");
+const leftArrow = document.querySelector(".left-arrow");
+const rightArrow = document.querySelector(".right-arrow");
+const dots = document.querySelectorAll(".dot");
+const projectsContainer = document.querySelector(".projects-container");
+
+let currentIndex = 0; // Start with the first project
+let startX = 0;
+let endX = 0;
+const SWIPE_THRESHOLD = 40; // px the user must swipe to trigger
+
+
+/* ------------------------------------------------
+   SLIDESHOW / PROJECT SWITCH
+-------------------------------------------------- */
+function updateProjects() {
+  projects.forEach((project, index) => {
+    if (index === currentIndex) {
+      project.style.zIndex = "3000"; // Bring current project to front
+      project.style.opacity = "1";   // Make it fully visible
+    } else {
+      project.style.zIndex = "2999"; // Send other projects to back
+      project.style.opacity = "0";   // Make them invisible
+    }
+  });
+
+  // Update active dot
+  dots.forEach((dot, dotIndex) => {
+    dot.classList.toggle("active", dotIndex === currentIndex);
+  });
+}
+
+// Arrow clicks (desktop)
+leftArrow.addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + projects.length) % projects.length;
+  updateProjects();
+});
+rightArrow.addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % projects.length;
+  updateProjects();
+});
+
+// Dot clicks
+dots.forEach((dot, dotIndex) => {
+  dot.addEventListener("click", () => {
+    currentIndex = dotIndex;
+    updateProjects();
+  });
+});
+
+/* ------------------------------------------------
+   SWIPE-TO-NAVIGATE (TOUCH EVENTS ON MOBILE)
+-------------------------------------------------- */
+// Touchstart: record initial X position
+projectsContainer.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+// Touchend: compare final X position to startX
+projectsContainer.addEventListener("touchend", (e) => {
+  endX = e.changedTouches[0].clientX;
+  const distance = endX - startX;
+
+  // If negative beyond threshold -> user swiped left -> next project
+  if (distance < -SWIPE_THRESHOLD) {
+    currentIndex = (currentIndex + 1) % projects.length;
+    updateProjects();
+  }
+  // If positive beyond threshold -> user swiped right -> previous project
+  else if (distance > SWIPE_THRESHOLD) {
+    currentIndex = (currentIndex - 1 + projects.length) % projects.length;
+    updateProjects();
+  }
+});
+
+// Initial update
+updateProjects();
+
+    
 });

@@ -1,85 +1,95 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // On scroll, move the .about-title upward
-  window.addEventListener('scroll', () => {
-    const aboutTitle = document.querySelector('.about-title');
+  // Detect if it's mobile / small screen
+  const isMobile = window.innerWidth < 768;
 
-    // Get how far down the page we've scrolled
+  // Speed factors
+  const aboutTitleSpeed    = isMobile ? 0.6 : 0.3;
+  const projectsTitleSpeed = isMobile ? 1.2 : 0.5;
+
+  // Query elements once
+  const aboutTitle = document.querySelector('.about-title');
+  const projectsTitle = document.querySelector('.projects-title');
+  const skills = document.querySelectorAll('.skill');
+  const continualLearning = document.querySelector('.continual-learning');
+  const educationContainer = document.querySelector(".education-container");
+  
+  const socialIcons = document.querySelector(".social-icons");
+  const icons = document.querySelectorAll(".icon-link svg");
+
+  let skillState = false;
+
+  // The single scroll handler
+  window.addEventListener('scroll', () => {
     const scrollY = window.scrollY || window.pageYOffset;
 
-    // Adjust this speed factor to taste; 0.5 means it moves half as fast as scroll
-    const speed = 0.3;
+    // ---------- 1) ABOUT-TITLE PARALLAX ----------
+    aboutTitle.style.transform = `translateY(${-scrollY * aboutTitleSpeed}px)`;
 
-    // Move the title up by some fraction of the scroll
-    aboutTitle.style.transform = `translateY(${-scrollY * speed}px)`;
+    // ---------- 2) SKILL BARS LOGIC ----------
+    if (scrollY >= 600 && !skillState) {
+      skillState = true;
+      skills.forEach(skill => {
+        const level = skill.getAttribute('data-level') || '50';
+        skill.style.width = level + '%';
+      });
+    } else if (scrollY <= 600 && skillState) {
+      skillState = false;
+      skills.forEach(skill => {
+        skill.style.width = '0';
+      });
+    }
+
+    // ---------- 3) .continual-learning BLUR ----------
+    if (scrollY >= 1450) {
+      continualLearning.style.filter = "blur(0px)";
+    } else {
+      continualLearning.style.filter = "blur(10px)";
+    }
+
+    // ---------- 4) PROJECTS-TITLE PARALLAX ----------
+    const startScroll = 1100;
+    const endScroll   = 1950;
+    const maxDistance = (endScroll - startScroll) * projectsTitleSpeed;
+
+    if (scrollY < startScroll) {
+      projectsTitle.style.transform = 'translateY(0px)';
+    } else if (scrollY > endScroll) {
+      projectsTitle.style.transform = `translateY(${maxDistance}px)`;
+    } else {
+      const distance = (scrollY - startScroll) * projectsTitleSpeed;
+      projectsTitle.style.transform = `translateY(${distance}px)`;
+    }
+
+    // ---------- 5) SOCIAL ICONS ANIMATION ----------
+    const scrollThreshold = isMobile ? 2400 : 3000;
+    console.log("window.innerWidth =", window.innerWidth);
+    console.log("isMobile =", isMobile);
+    if (scrollY >= scrollThreshold) {
+      // Move social-icons to top 50%
+      socialIcons.style.top = "50%";
+      // Enlarge icons
+      icons.forEach(icon => {
+        icon.style.transform = "scale(2)";
+        icon.style.transition = "transform 1.5s ease, margin 1.5s ease";
+        icon.style.margin = "0px 30px";
+      });
+    } else {
+      socialIcons.style.top = "80%";
+      socialIcons.style.transform = "translateY(0)";
+      icons.forEach(icon => {
+        icon.style.transform = "scale(1)";
+        icon.style.margin = "0px 10px";
+      });
+    }
   });
 
-
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    // Parallax on the .about-title
-    window.addEventListener('scroll', () => {
-      const aboutTitle = document.querySelector('.about-title');
-  
-      // How far down the page we've scrolled
-      const scrollY = window.scrollY || window.pageYOffset;
-  
-      // Parallax speed for the title
-      const speed = 0.3;
-      // Move the title up
-      aboutTitle.style.transform = `translateY(${-scrollY * speed}px)`;
-    });
-  
-    // Skill bars fill/reset based on scrolling past/above 1000px
-    const skills = document.querySelectorAll('.skill');
-    let skillState = false; // false = not filled, true = filled
-  
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY || window.pageYOffset;
-  
-      // If we've scrolled past 1000px and skillState = false, fill them
-      if (scrollY >= 700 && !skillState) {
-        skillState = true;
-        skills.forEach(skill => {
-          const level = skill.getAttribute('data-level') || '50';
-          skill.style.width = level + '%';
-        });
-      }
-      // If we've gone back above 1000px and skillState = true, reset them
-      else if (scrollY <= 700 && skillState) {
-        skillState = false;
-        skills.forEach(skill => {
-          skill.style.width = '0';
-        });
-        
-      }
-          
-
-      if (scrollY >= 1200) {
-        document.querySelector(".continual-learning").style.filter = "blur(0px)"
-      }
-
-      // If we've gone back above 1000px and skillState = true, reset them
-      else if (scrollY <= 1200 ){
-        document.querySelector(".continual-learning").style.filter = "blur(10px)"
-
-        
-      }
-    });
-
-
-  const educationContainer = document.querySelector(".education-container");
-
+  // ========== EDUCATION CONTAINER TOGGLE ==========
   educationContainer.addEventListener("click", function () {
-    // Toggle the "active" class
+    // Toggle "active" class
     this.classList.toggle("active");
-
-    // Remove the pulse effect once clicked
+    // Remove pulse if present
     if (this.classList.contains("pulse")) {
       this.classList.remove("pulse");
     }
   });
-
-
-    
-  });
+});

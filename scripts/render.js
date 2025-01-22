@@ -210,30 +210,67 @@ document.addEventListener("DOMContentLoaded", function () {
         connections.forEach(connection => connection.material.color.set(connectionColor));
     }
 
-    // Theme toggle function
     window.toggleTheme = function () {
         const root = document.documentElement;
         const currentPrimaryColor = getCSSVariable('--primary-color');
         const logo = document.getElementById('logo');
+        const vistaLogo = document.getElementById('vistaLogo');
+        const icons = document.querySelectorAll(".icon-link svg");
+        const projectGit = document.querySelectorAll(".project svg")
 
+      
+        // If currently dark (#18181d), switch to light (#ffffff)
         if (currentPrimaryColor === '#18181d') {
-            root.style.setProperty('--primary-color', '#ffffff');
-            root.style.setProperty('--secondary-color', '#4a4a4a');
-            root.style.setProperty('--tertiary-color', '#2b2b33');
-            root.style.setProperty('--scene-node-color', '#4a4a4a');
-            root.style.setProperty('--scene-connection-color', '#888888');
-            logo.src = 'assets/images/JT_dark.png';
-        } else {
-            root.style.setProperty('--primary-color', '#18181d');
-            root.style.setProperty('--secondary-color', 'rgb(238, 146, 214)');
-            root.style.setProperty('--tertiary-color', '#ffffff');
-            root.style.setProperty('--scene-node-color', '#88ccff');
-            root.style.setProperty('--scene-connection-color', '#cccccc');
-            logo.src = 'assets/images/JT_light.png';
-        }
+          // Light mode
+          root.style.setProperty('--primary-color', '#ffffff');
+          root.style.setProperty('--secondary-color', '#18181d');
+          root.style.setProperty('--tertiary-color', '#2b2b33');
+          root.style.setProperty('--quatro-color', '#ffffff');
+      
+          root.style.setProperty('--scene-node-color', '#4a4a4a');
+          root.style.setProperty('--scene-connection-color', '#888888');
+          
+          logo.src = 'assets/images/JT_dark.png';
+          vistaLogo.style.filter = "invert(0)";
+      
+          icons.forEach(icon => {
+            icon.style.filter = "invert(0)";
+                        icon.style.filter = "invert(0)";
 
-        updateSceneColors();
-    };
+          });
+
+          projectGit.forEach(git => {
+            git.style.filter = "invert(0)";
+
+          });
+          
+        } else {
+          // Dark mode
+          root.style.setProperty('--primary-color', '#18181d');
+          root.style.setProperty('--secondary-color', '#EDC9AF');
+          root.style.setProperty('--tertiary-color', '#ffffff');
+          root.style.setProperty('--quatro-color', '#EDC9AF');
+      
+          root.style.setProperty('--scene-node-color', '#EDC9AF');
+          root.style.setProperty('--scene-connection-color', '#cccccc');
+          
+          logo.src = 'assets/images/JT_light.png';
+          vistaLogo.style.filter = "invert(1)";
+          
+          projectGit.forEach(git => {
+            git.style.filter = "invert(1)";
+
+          });
+      
+          icons.forEach(icon => {
+            icon.style.filter = "invert(1)";
+
+          });
+        }
+      
+        updateSceneColors(); // If you have a function to update the 3D scene
+      };
+      
 
     // Adjust camera on resize
     window.addEventListener('resize', () => {
