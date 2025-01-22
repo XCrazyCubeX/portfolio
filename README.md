@@ -4,6 +4,10 @@ Welcome to my portfolio repository! This site highlights my journey as a develop
 
 ---
 
+![Screenshot (40)](https://github.com/user-attachments/assets/3f4a683a-62f7-47dc-b0bf-cad7eff41947)
+
+![Screenshot (42)](https://github.com/user-attachments/assets/ab06301a-d680-42e0-8ff5-636b22baec95)
+
 ## 🌟 **Features**
 
 ### 🎨 **Custom Design**
@@ -33,16 +37,8 @@ Welcome to my portfolio repository! This site highlights my journey as a develop
 ## 🛠 **Tech Stack**
 
 - **Frontend Technologies**: HTML5, CSS3, JavaScript
-- **Animations**: GSAP (GreenSock) for enhanced interactivity
+- **Animations**: GSAP (GreenSock) for enhanced interactivit
 - **Optional Enhancements**: Three.js for 3D visuals
-
----
-
-## 📂 **Getting Started**
-
-1. **Clone or download the repository** and open the `index.html` file in your browser.
-2. For development, use a live server or local development tools to test updates.
-3. Explore and interact with the portfolio features!
 
 ---
 
