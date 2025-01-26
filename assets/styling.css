@@ -915,8 +915,11 @@
 
 
   .project-content {
-    
+    background-color: var(--primary-color);
     opacity: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
   
   /* Project heading / text */
@@ -935,14 +938,16 @@
   }
 
   .project p {
-    top: 10%;
+    top: 16%;
+    margin-top: 30px;
     position: relative;
-    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
     font-family: ss-taurus;
     font-size: clamp(9px, 0.8vw, 1vw);
     color: var(--tertiary-color);
-    width: 100%;
-    
+
+    width: 80%;
 
   }
 
