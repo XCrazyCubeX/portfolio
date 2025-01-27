@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Make sure the cursor is visible initially
     cursor.style.opacity = "1";
   
-    // Add hover effects for links (mouse only)
+    // Add hover effects for links (mouse only)w
     links.forEach(link => {
       link.addEventListener("mouseover", function() {
         cursor.classList.add("custom-cursor--link");
@@ -32,28 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   
     // === Detect first touch and hide cursor for the rest of the session ===
-    window.addEventListener(
-      "touchstart",
-      function hideCursorOnTouch() {
-        // Hide the custom cursor
-        cursor.style.display = "none";
-  
-        // Remove all mousemove / mouseover listeners if you like,
-        // since we no longer need them:
-        window.removeEventListener("mousemove", mouseMoveHandler);
-        window.removeEventListener("mouseout", () => {});
-        window.removeEventListener("mouseover", () => {});
-  
-        // Optionally remove the hover effects from links:
-        links.forEach(link => {
-          link.removeEventListener("mouseover", () => {});
-          link.removeEventListener("mouseout", () => {});
-        });
-  
-        // This listener should only run once:
-        window.removeEventListener("touchstart", hideCursorOnTouch);
-      },
-      { once: true }
-    );
+
   });
   

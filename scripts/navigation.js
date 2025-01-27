@@ -108,29 +108,6 @@ dots.forEach((dot, dotIndex) => {
    SWIPE-TO-NAVIGATE (TOUCH EVENTS ON MOBILE)
 -------------------------------------------------- */
 // Touchstart: record initial X position
-projectsContainer.addEventListener("touchstart", (e) => {
-  startX = e.touches[0].clientX;
-});
-
-// Touchend: compare final X position to startX
-projectsContainer.addEventListener("touchend", (e) => {
-  endX = e.changedTouches[0].clientX;
-  const distance = endX - startX;
-
-  // If negative beyond threshold -> user swiped left -> next project
-  if (distance < -SWIPE_THRESHOLD) {
-    currentIndex = (currentIndex + 1) % projects.length;
-    updateProjects();
-  }
-  // If positive beyond threshold -> user swiped right -> previous project
-  else if (distance > SWIPE_THRESHOLD) {
-    currentIndex = (currentIndex - 1 + projects.length) % projects.length;
-    updateProjects();
-  }
-});
-
-// Initial update
-updateProjects();
 
     
 });
