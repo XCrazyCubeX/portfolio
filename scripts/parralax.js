@@ -81,8 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         icon.style.margin = "0px 10px";
       });
     }
-  });
-
+  })
   // ========== EDUCATION CONTAINER TOGGLE ==========
   educationContainer.addEventListener("click", function () {
     // Toggle "active" class
