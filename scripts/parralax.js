@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ---------- 5) SOCIAL ICONS ANIMATION ----------
-    const scrollThreshold = isMobile ? 3400 : 2600;
+    const scrollThreshold = isMobile ? 3100 : 3200;
     console.log("window.innerWidth =", window.innerWidth);
     console.log("isMobile =", isMobile);
     if (scrollY >= scrollThreshold) {
