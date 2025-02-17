@@ -129,8 +129,8 @@
   font-size: 12px;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  text-align: center; /* Ensures text alignment under the icon */
-  margin-top: 5px; /* Adds spacing between the icon and text */
+  text-align: center;
+  margin-top: 5px;
 }
 
 .icon-link {
