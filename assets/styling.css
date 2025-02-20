@@ -727,7 +727,7 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 93%;
+  width: 95%;
 }
 
 /* Heading */
@@ -752,6 +752,8 @@ img {
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 20px; /* Optional spacing between rows */
+  border-radius: 5px;
+
 }
 
 /* Marquee Cover (for fade effect) */
@@ -765,6 +767,8 @@ img {
   background-image: linear-gradient(270deg, hsla(0, 0%, 100%, 0) 70%, #e4e4e433),
                     linear-gradient(270deg, #e4e4e434, hsla(0, 0%, 100%, 0) 30%);
 }
+
+
 
 /* Track for scrolling animation */
 .track-horizontal,
@@ -795,7 +799,7 @@ img {
   width: 250px;           /* Adjust width as needed */
   height: 200px;          /* Increase height to allow space for icon and text */
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid var(--secondary-color);
   transition: transform 0.3s ease-in-out;
 }
@@ -804,7 +808,8 @@ img {
   font-size: 2.4rem;       /* Increase icon size */
   margin-bottom: 10px;    /* Space between icon and label */
   display: inline-block;
-  color: var(--secondary-color);
+  color: var(--tertiary-color);
+  
 }
 .icon-container-alt svg {
   width: 30% !important;  /* Set desired width */
@@ -853,6 +858,8 @@ img {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
+
 }
 
   
@@ -902,10 +909,13 @@ img {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 100px;
+    margin-top: 150px;
     width: 95%;
     animation: pulse-animation 2s infinite;
     transition: box-shadow 0.8s ease;
+    
+    background-image: linear-gradient(270deg, hsla(0, 0%, 100%, 0) 70%, #e4e4e41b),
+    linear-gradient(270deg, #e4e4e415, hsla(0, 0%, 100%, 0) 30%);
   }
 
   .pulse {
@@ -975,7 +985,7 @@ img {
     opacity: 1;
   }
   .education-container h1 {
-    margin-top: 40px;
+    padding: 20px 0px;
     font-family: ss-taurus;
     font-size: clamp(15px, 1.8vw, 2vw);
     color: var(--tertiary-color);
