@@ -11,17 +11,19 @@
 
   }
   :root {
-    /* DARK MODE BY DEFAULT */
-    --primary-color: #0c0c0e;       /* main background */
-    --secondary-color: #EDC9AF;     /* accent color or text color in dark mode */
-    --tertiary-color: #ffffff;      /* another accent */
-    --quatro-color: #EDC9AF;
+    /* LIGHT MODE BY DEFAULT */
+    --primary-color: #ffffff;       /* main background (white) */
+    --secondary-color: #0c0c0e;       /* dark text/accent color */
+    --tertiary-color: #2b2b33;        /* additional accent */
+    --quatro-color: #ffffff;         
   
-    /* 3D Scene theme colors */
-    --scene-node-color-dark: #EDC9AF;
+    /* 3D Scene theme colors for light mode */
+    --scene-node-color: #4a4a4a;
+    --scene-connection-color: #0c0c0e;
+
     --scene-connection-color-dark: #8d8d8d;
-    --scene-node-color-light: #2b2b33;
-    --scene-connection-color-light: #888888;
+    --scene-connection-color-light: #0c0c0e;
+
   }
   
   /* Fonts */
@@ -158,7 +160,6 @@
   height: 48px;
   margin: 0 10px;
   mix-blend-mode: difference;
-  filter: invert(1);
 
 }
 
@@ -175,7 +176,7 @@
   }
 
   .social-icons svg {
-    max-width: 20px;
+    max-width: 30px;
   }
 }
 
@@ -747,7 +748,7 @@ img {
   display: flex;
   overflow: hidden;
   width: 100%;
-  height: 120px;
+  height: 80px;
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 20px; /* Optional spacing between rows */
@@ -795,7 +796,7 @@ img {
   flex-direction: column; /* Stack icon and text vertically */
   justify-content: center;
   align-items: center;
-  width: 250px;           /* Adjust width as needed */
+  width: 250px; 
   height: 200px;          /* Increase height to allow space for icon and text */
   padding: 10px;
   border-radius: 10px;
@@ -803,8 +804,22 @@ img {
   transition: transform 0.3s ease-in-out;
 }
 
+
+@media screen and (max-width: 600px) {
+  .icon-container-alt {
+    width: 80px;
+  }
+
+  .spacer-30 {
+    width: 10px;
+  }
+
+  
+}
+
+
 .icon-container-alt i {
-  font-size: 2.4rem;       /* Increase icon size */
+  font-size: clamp(30px, 1.8vw, 1.8vw);
   margin-bottom: 10px;    /* Space between icon and label */
   display: inline-block;
   color: var(--tertiary-color);
@@ -820,7 +835,7 @@ img {
 }
 
 .icon-container-alt span {
-  font-size: 0.7rem;      /* Adjust text size as desired */
+  font-size: clamp(10px, 0.4vw, 1.8vw);
   color: var(--tertiary-color);
   text-align: center;
 }
@@ -1015,7 +1030,6 @@ img {
     width: auto;
     height: 4vh;
     opacity: 90%;
-    filter: invert(1)
   }
   
   /* =================================== 

@@ -212,64 +212,58 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.toggleTheme = function () {
         const root = document.documentElement;
-        const currentPrimaryColor = getCSSVariable('--primary-color');
+        const currentPrimaryColor = getCSSVariable('--primary-color'); // helper function you have
         const logo = document.getElementById('logo');
         const vistaLogo = document.getElementById('vistaLogo');
         const icons = document.querySelectorAll(".icon-link svg");
-        const projectGit = document.querySelectorAll(".project svg")
-
+        const projectGit = document.querySelectorAll(".project svg");
       
-        // If currently dark (#18181d), switch to light (#ffffff)
-        if (currentPrimaryColor === '#0c0c0e') {
-          // Light mode
-          root.style.setProperty('--primary-color', '#ffffff');
-          root.style.setProperty('--secondary-color', '#0c0c0e');
-          root.style.setProperty('--tertiary-color', '#2b2b33');
-          root.style.setProperty('--quatro-color', '#ffffff');
-      
-          root.style.setProperty('--scene-node-color', '#4a4a4a');
-          root.style.setProperty('--scene-connection-color', '#888888');
-          
-          logo.src = 'assets/images/JT_dark.png';
-          vistaLogo.style.filter = "invert(0)";
-      
-          icons.forEach(icon => {
-            icon.style.filter = "invert(0)";
-                        icon.style.filter = "invert(0)";
-
-          });
-
-          projectGit.forEach(git => {
-            git.style.filter = "invert(0)";
-
-          });
-          
-        } else {
-          // Dark mode
+        // If currently in light mode (primary is white), switch to dark mode
+        if (currentPrimaryColor === '#ffffff') {
+          // Dark mode settings
           root.style.setProperty('--primary-color', '#0c0c0e');
           root.style.setProperty('--secondary-color', '#EDC9AF');
           root.style.setProperty('--tertiary-color', '#ffffff');
           root.style.setProperty('--quatro-color', '#EDC9AF');
-      
+          
           root.style.setProperty('--scene-node-color', '#EDC9AF');
-          root.style.setProperty('--scene-connection-color', '#cccccc');
+          root.style.setProperty('--scene-connection-color', 'black');
           
           logo.src = 'assets/images/JT_light.png';
           vistaLogo.style.filter = "invert(1)";
           
-          projectGit.forEach(git => {
-            git.style.filter = "invert(1)";
-
-          });
-      
           icons.forEach(icon => {
             icon.style.filter = "invert(1)";
-
+          });
+          
+          projectGit.forEach(git => {
+            git.style.filter = "invert(1)";
+          });
+        } else {
+          // Light mode settings
+          root.style.setProperty('--primary-color', '#ffffff');
+          root.style.setProperty('--secondary-color', '#0c0c0e');
+          root.style.setProperty('--tertiary-color', '#2b2b33');
+          root.style.setProperty('--quatro-color', '#ffffff');
+          
+          root.style.setProperty('--scene-node-color', '#4a4a4a');
+          root.style.setProperty('--scene-connection-color', '#0c0c0e');
+          
+          logo.src = 'assets/images/JT_dark.png';
+          vistaLogo.style.filter = "invert(0)";
+          
+          projectGit.forEach(git => {
+            git.style.filter = "invert(0)";
+          });
+          
+          icons.forEach(icon => {
+            icon.style.filter = "invert(0)";
           });
         }
-      
-        updateSceneColors(); // If you have a function to update the 3D scene
+        
+        updateSceneColors(); // Update your 3D scene if needed
       };
+      
       
 
     // Adjust camera on resize
