@@ -19,10 +19,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="scripts/parralax.js"></script>
     <script src="scripts/navigation.js" defer></script>
+    <!-- Font Awesome CDN -->
+    <script src="https://kit.fontawesome.com/5e8a78e9e2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">  
 </head>
 <body>
 
-<!--#region =================== miscellaneous items -->
+<!-- #region =================== miscellaneous items -->
 
     <!-- Background Effects -->
     <div id="background-network"></div>
@@ -138,14 +142,14 @@
     </div>
 
 
-    
+
     <!-- start of all sections
-     this includes hero section, about section,
-     projects section and contact section
+        this includes hero section, about section,
+        projects section and contact section
     -->
 
-    
-    
+
+
     <!-- Hero Section 
     first section there is to see
     includes a href to about me and projects.
@@ -173,7 +177,9 @@
     <!-- #endregion =================== -->
 
 
-    <!-- #region About Section 
+    <!-- #region About Section --!>
+
+    <!--
     includes my skills and my education,
     this is where proof of concept lies for my exam.
     -->
@@ -185,31 +191,126 @@
     <div class="about-content-container">
 
 
-    <div class="skills-container">
-    <h1>skills</h1>
-
-    <!-- skills, there are not displayed properly might
-     have to remove the progress bars because i dont need them
-
-     TODO 
-    -->
-
-    <p1>html</p1><div class="skill skill-1" data-level="80"></div>
-    <p1>css</p1><div class="skill skill-2" data-level="75"></div>
-    <p1>javascript</p1><div class="skill skill-3" data-level="50"></div>
-    <p1>reactjs</p1> <div class="skill skill-4" data-level="30"></div>
-    <p1>ui/ux</p1><div class="skill skill-5" data-level="80"></div>
-    <p1>Applied AI</p1><div class="skill skill-6" data-level="40"></div>
-    <p1>Hardware Engineering</p1><div class="skill skill-7" data-level="20"></div>
-    <p1>Git</p1><div class="skill skill-7" data-level="60"></div>
-    <p1>SCRUM</p1><div class="skill skill-7" data-level="60"></div>
-
-    </div>
-    
+      <div class="skills-container">
+  
+        <!-- Row 1: 5 items -->
+        <div class="marquee-horizontal-large">
+          <div class="marquee-cover-horizontal"></div>
+          <div class="track-horizontal">
+            <!-- First copy -->
+            <div class="flex-horizontal">
+               <div class="icon-container-alt">
+                 <i class="fab fa-html5"></i>
+                 <span>HTML</span>
+               </div>
+               <div class="spacer-30"></div>
+               <div class="icon-container-alt">
+                 <i class="fab fa-css3-alt"></i>
+                 <span>CSS</span>
+               </div>
+               <div class="spacer-30"></div>
+               <div class="icon-container-alt">
+                 <i class="fab fa-js"></i>
+                 <span>JavaScript</span>
+               </div>
+               <div class="spacer-30"></div>
+               <div class="icon-container-alt">
+                 <i class="fab fa-react"></i>
+                 <span>React</span>
+               </div>
+               <div class="spacer-30"></div>
+               <div class="icon-container-alt">
+                 <i class="fab fa-figma"></i>
+                 <span>UI/UX</span>
+               </div>
+            </div>
+            <!-- Duplicate copy for seamless scrolling -->
+            <div class="flex-horizontal">
+               <div class="icon-container-alt">
+                 <i class="fab fa-html5"></i>
+                 <span>HTML</span>
+               </div>
+               <div class="spacer-30"></div>
+               <div class="icon-container-alt">
+                 <i class="fab fa-css3-alt"></i>
+                 <span>CSS</span>
+               </div>
+               <div class="spacer-30"></div>
+               <div class="icon-container-alt">
+                 <i class="fab fa-js"></i>
+                 <span>JavaScript</span>
+               </div>
+               <div class="spacer-30"></div>
+               <div class="icon-container-alt">
+                 <i class="fab fa-react"></i>
+                 <span>React</span>
+               </div>
+               <div class="spacer-30"></div>
+               <div class="icon-container-alt">
+                 <i class="fas fa-paint-roller"></i>
+                 <span>UI/UX</span>
+               </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Row 2: 4 items (reverse direction for variety) -->
+        <div class="marquee-horizontal-large">
+          <div class="marquee-cover-horizontal"></div>
+          <div class="track-horizontal-alt">
+            <!-- First copy -->
+            <div class="flex-horizontal">
+               <div class="icon-container-alt">
+                <i class="fas fa-robot"></i>
+                 <span>Applied AI</span>
+               </div>
+               <div class="spacer-30"></div>
+               <div class="icon-container-alt">
+                 <i class="fas fa-microchip"></i>
+                 <span>Hardware</span>
+               </div>
+               <div class="spacer-30"></div>
+               <div class="icon-container-alt">
+                 <i class="fab fa-github"></i>
+                 <span>Git</span>
+               </div>
+               <div class="spacer-30"></div>
+               <div class="icon-container-alt">
+                 <i class="fas fa-users"></i>
+                 <span>SCRUM</span>
+               </div>
+            </div>
+            <!-- Duplicate copy for seamless scrolling -->
+            <div class="flex-horizontal">
+               <div class="icon-container-alt">
+                <i class="fas fa-robot"></i>
+                 <span>Applied AI</span>
+               </div>
+               <div class="spacer-30"></div>
+               <div class="icon-container-alt">
+                 <i class="fas fa-microchip"></i>
+                 <span>Hardware</span>
+               </div>
+               <div class="spacer-30"></div>
+               <div class="icon-container-alt">
+                 <i class="fab fa-github"></i>
+                 <span>Git</span>
+               </div>
+               <div class="spacer-30"></div>
+               <div class="icon-container-alt">
+                 <i class="fas fa-users"></i>
+                 <span>SCRUM</span>
+               </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
 
     <!-- education container displays all my educations earned.
-     starting from software development on 
-     Vista college
+        starting from software development on 
+        Vista college
     -->
     <a><div class="education-container pulse">
     <h1>education</h1>
@@ -220,7 +321,7 @@
     <hr>
     <p1>2.5 years</p1>
     </div>
-    
+
     <!-- Vista college software developer.
     this also includes a link to proof of b1 k1 and b1 k2
     -->
@@ -237,13 +338,15 @@
     </p>
 
 
-    <a><li><a href="https://www.canva.com/design/DAGIk4kezYA/71XznTYzdFBB4Lqp08Ufzg/edit?utm_content=DAGIk4kezYA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Bewijsstukken</a></li></a>
+    <a><li><a
+    rel="noopener noreferrer"
+    href="https://www.canva.com/design/DAGIk4kezYA/71XznTYzdFBB4Lqp08Ufzg/edit?utm_content=DAGIk4kezYA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Bewijsstukken</a></li></a>
     <p1>kerntakes en werkprocessen</p1>
     </div>
     </div>
 
     </div></a>
-    
+
     <!-- random text -->
     <div class="continual-learning">
     <a><p>always continual learning</p></a> 
@@ -265,7 +368,7 @@
 
 
     <div class="projects-container">
-    
+
     <!-- project 1 -->
 
     <!-- project number one will be my own portfolio,
@@ -277,7 +380,7 @@
     <div class="project-content">
     <h1>portfolio</h1>
     <p1>Joyren Terken</p1>
-    
+
     <li><a
     target="_blank" 
     rel="noopener noreferrer"
@@ -291,7 +394,7 @@
     <!-- project 2 -->
 
     <!-- project number two will be CARL autonomous vehicle
-     contains a not working link to github. 
+        contains a not working link to github. 
     -->
     <div class="project project-item2" id="projectItem2">
     <img src="assets/images/carl.png">
@@ -316,8 +419,8 @@
     <!-- project 3 -->
 
     <!-- project number three will be flappy bird agent. 
-     linked to its github repository. this bird can fly autonomous.
-     might have to show them flappy bird.
+        linked to its github repository. this bird can fly autonomous.
+        might have to show them flappy bird.
     -->
     <div class="project project-item3" id="projectItem3">
     <img src="assets/images/flappy-bird-10.jpg">
@@ -339,6 +442,23 @@
     </div>
 
     </div>
+
+    <div class="project project-item" id="projectItem">
+        <img src="assets/images/windows95.png">
+    
+        <div class="project-content">
+        <h1>Windows95</h1>
+        <p1>on solana</p1>
+    
+        <li><a
+        target="_blank" 
+        rel="noopener noreferrer"
+        href="https://windows95onsol.com">More info
+        </a></li>
+        <p>A project me and a friend worked on
+        </p>
+        </div>
+        </div>
 
     </div>
     </section>
@@ -373,7 +493,9 @@
     </div>
 
     <!--#endregion -->
-   
+
     </main>
+
+    <!-- #endregion -->
     </body>
     </html>

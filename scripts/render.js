@@ -220,10 +220,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       
         // If currently dark (#18181d), switch to light (#ffffff)
-        if (currentPrimaryColor === '#18181d') {
+        if (currentPrimaryColor === '#0c0c0e') {
           // Light mode
           root.style.setProperty('--primary-color', '#ffffff');
-          root.style.setProperty('--secondary-color', '#18181d');
+          root.style.setProperty('--secondary-color', '#0c0c0e');
           root.style.setProperty('--tertiary-color', '#2b2b33');
           root.style.setProperty('--quatro-color', '#ffffff');
       
@@ -246,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
           
         } else {
           // Dark mode
-          root.style.setProperty('--primary-color', '#18181d');
+          root.style.setProperty('--primary-color', '#0c0c0e');
           root.style.setProperty('--secondary-color', '#EDC9AF');
           root.style.setProperty('--tertiary-color', '#ffffff');
           root.style.setProperty('--quatro-color', '#EDC9AF');
