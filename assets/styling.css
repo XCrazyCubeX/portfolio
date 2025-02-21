@@ -726,7 +726,6 @@ img {
   font-family: ss-taurus;
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 95%;
 }
 
@@ -734,8 +733,10 @@ img {
 .skills-container h1 {
   font-family: ss-taurus;
   position: relative;
-  margin: 20px 0;
+  margin: 50px 0;
   font-size: clamp(18px, 2vw, 2.5vw);
+  text-align: left;
+  left: 1%;
 }
 
 .skills-container span {
@@ -876,6 +877,115 @@ img {
 
 }
 
+
+/* Experience Container */
+.experience-container {
+  top: 100px;
+  width: 100%;
+  position: relative;
+  border-radius: 10px;
+  margin-bottom: 200px;
+}
+
+.experience-container h1 {
+  font-family: ss-taurus;
+  position: relative;
+  margin: 10px 0;
+  font-size: clamp(18px, 1.7vw, 2.5vw);
+  text-align: left;
+  color: var(--tertiary-color);
+
+}
+
+/* Experiences Wrapper */
+.experiences {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  
+}
+
+/* Individual Experience */
+.experience {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 30px;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.experience:hover {
+  transform: scale(1.02);
+}
+
+/* Experience Icon */
+.experience-icon {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.experience-icon i {
+  color: var(--tertiary-color);
+  font-size: 24px;
+}
+
+/* 📱 Mobile View: Icon Above Text */
+@media (max-width: 768px) {
+  .experience {
+    flex-direction: column; /* Stack items vertically */
+  }
+}
+
+/* Experience Details */
+.experience-details {
+  flex-grow: 1;
+}
+
+.experience-details h3 {
+  font-size: clamp(12px, 1.3vw, 2.5vw);
+  color: var(--tertiary-color);
+  margin-bottom: 30px;
+  font-family: ss-taurus;
+  position: relative;
+  top: 5px;
+  
+}
+
+.experience-details h4 {
+  font-size: clamp(9px, 0.5vw, 1.1vw);
+  color: var(--tertiary-color);
+  margin-bottom: 5px;
+  font-family: ss-taurus;
+
+}
+
+.date {
+  font-size: clamp(9px, 0.5vw, 1.1vw);
+  color: var(--tertiary-color);
+  margin-bottom: 10px;
+  font-family: ss-taurus;
+
+}
+
+.date i {
+  margin-right: 5px;
+}
+
+.experience-details p {
+  font-size: clamp(12px, 0.9vw, 1.4vw);
+  color: var(--tertiary-color);
+  line-height: 1.5;
+  font-family: ss-taurus;
+
+}
+
+
   
   /* Continual-learning line */
   .continual-learning {
@@ -919,17 +1029,15 @@ img {
   
   /* Education container */
   .education-container {
+    
     border-radius: 5px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     margin-top: 150px;
     width: 95%;
-    animation: pulse-animation 2s infinite;
     transition: box-shadow 0.8s ease;
-    
-    background-image: linear-gradient(270deg, hsla(0, 0%, 100%, 0) 70%, #e4e4e41b),
-    linear-gradient(270deg, #e4e4e415, hsla(0, 0%, 100%, 0) 30%);
+
   }
 
   .pulse {
@@ -945,8 +1053,9 @@ img {
       box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
   }}
   .education-item {
+    animation: pulse-animation 2s infinite;
     position: relative;
-    margin-top: 20px;
+    margin-top: 60px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -970,8 +1079,7 @@ img {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    transition: max-height 0.9s ease, opacity 0.8s ease;
-    width: 100%;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
 
   .dropdown-content li a {
@@ -994,17 +1102,21 @@ img {
   .dropdown-content li:hover {
     transform: translateY(-20px)
   }
-  .education-container.active .dropdown-content {
-    max-height: 800px;
-    opacity: 1;
-  }
+/* Hide dropdown by default */
+
+
+/* Show dropdown only when the specific education-item is active */
+.education-item.active .dropdown-content {
+  max-height: 800px;
+  opacity: 1;
+}
+
   .education-container h1 {
     padding: 20px 0px;
     font-family: ss-taurus;
     font-size: clamp(15px, 1.8vw, 2vw);
     color: var(--tertiary-color);
     position: relative;
-    left: 1%;
   }
   .education-container p1 {
     width: 100%;
@@ -1029,6 +1141,13 @@ img {
     margin-top: 30px;
     width: auto;
     height: 4vh;
+    opacity: 90%;
+  }
+
+  .zuyd-logo {
+    margin-top: 30px;
+    width: auto;
+    height: 6vh;
     opacity: 90%;
   }
   

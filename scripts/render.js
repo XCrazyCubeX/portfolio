@@ -215,6 +215,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const currentPrimaryColor = getCSSVariable('--primary-color'); // helper function you have
         const logo = document.getElementById('logo');
         const vistaLogo = document.getElementById('vistaLogo');
+        const vistaLogoex = document.getElementById('vistaLogoex');
+
         const icons = document.querySelectorAll(".icon-link svg");
         const projectGit = document.querySelectorAll(".project svg");
       
@@ -231,7 +233,8 @@ document.addEventListener("DOMContentLoaded", function () {
           
           logo.src = 'assets/images/JT_light.png';
           vistaLogo.style.filter = "invert(1)";
-          
+          vistaLogoex.style.filter = "invert(1)";
+
           icons.forEach(icon => {
             icon.style.filter = "invert(1)";
           });
@@ -251,7 +254,8 @@ document.addEventListener("DOMContentLoaded", function () {
           
           logo.src = 'assets/images/JT_dark.png';
           vistaLogo.style.filter = "invert(0)";
-          
+          vistaLogoex.style.filter = "invert(0)";
+
           projectGit.forEach(git => {
             git.style.filter = "invert(0)";
           });
