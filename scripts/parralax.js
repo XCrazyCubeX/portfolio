@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ---------- 5) SOCIAL ICONS ANIMATION ----------
-    const scrollThreshold = isMobile ? 2900 : 2900;
+    const scrollThreshold = isMobile ? 4000 : 4000;
     console.log("window.innerWidth =", window.innerWidth);
     console.log("isMobile =", isMobile);
     if (scrollY >= scrollThreshold) {
@@ -83,35 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   })
 
-
-// ========== EDUCATION CONTAINER TOGGLE ==========
-  // Select all education items
-  const educationItems = document.querySelectorAll(".education-item");
-
-  educationItems.forEach(item => {
-      item.addEventListener("click", function (event) {
-          // Prevent event bubbling
-          event.stopPropagation();
-
-          // Close all dropdowns before opening the clicked one
-          educationItems.forEach(otherItem => {
-              if (otherItem !== item) {
-                  otherItem.classList.remove("active");
-              }
-          });
-
-          // Toggle the clicked dropdown
-          this.classList.toggle("active");
-
-          // Remove pulse effect if present
-          if (this.classList.contains("pulse")) {
-              this.classList.remove("pulse");
-          }
-      });
-  });
-
-
-  
 
   
 });

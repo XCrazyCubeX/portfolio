@@ -691,8 +691,7 @@
     z-index: 2000;
     background: transparent;
     border-radius: 6px;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+
   }
   .about-content-container p {
     font-size: clamp(14px, 1.3vw, 2vw);
@@ -769,8 +768,7 @@ img {
   right: 0;
   bottom: 0;
   z-index: 10;
-  background-image: linear-gradient(270deg, hsla(0, 0%, 100%, 0) 70%, #e4e4e433),
-                    linear-gradient(270deg, #e4e4e434, hsla(0, 0%, 100%, 0) 30%);
+ 
 }
 
 
@@ -1033,7 +1031,6 @@ img {
   
   /* Education container */
   .education-container {
-    
     border-radius: 5px;
     position: relative;
     left: 50%;
@@ -1058,16 +1055,20 @@ img {
   }}
   .education-item {
     position: relative;
-    margin-top: 60px;
+    margin-top: 0px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     background-color: transparent;
-    box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-radius: 10px;
     padding: 2% 20px;
+  }
+
+  .education-item img {
+    width: min-content;
+    margin-bottom: 10px;
   }
 
   .education-item a {
@@ -1084,8 +1085,8 @@ img {
   /* Dropdown content is hidden by default */
   .dropdown-content {
     max-height: 0;
-    opacity: 0;
-    overflow: hidden;
+    opacity: 1;
+    overflow: visible;
     transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
 
@@ -1176,16 +1177,18 @@ img {
   
 /* Container uses flex to center items */
 .projects-container {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 100%;
-  position: relative;
+  gap: 20px;                /* spacing between cards */
   top: 200px;
 }
 
 /* Each project card */
 .project {
+  flex: 1 1 calc(50% - 20px); /* two cards per row, minus gap */
+
   border-radius: 0px;
   transition-duration: 0.6s;
   position: relative;
@@ -1193,7 +1196,7 @@ img {
   overflow: hidden;
   width: calc(50% - 20px);
   min-width: 200px;
-  max-width: 600px;
+  max-width: max-content;
   height: 300px;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
   cursor: pointer;
@@ -1206,19 +1209,21 @@ img {
 }
 
 /* Project images */
+
+.project video,
 .project img {
-
   width: 100%;
+  height: 100%;
   object-fit: cover;
-
   transition: opacity 0.5s ease;
 }
-
 /* Hover content */
 .project-content {
   position: absolute;
   top: 0;
   left: 0;
+  inset: 0; /* top/right/bottom/left: 0 */
+
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8); /* Dark background with opacity */
@@ -1287,12 +1292,12 @@ img {
   }
 }
 
-@media screen and (max-width: 768px) {
+/* Media query for smaller screens—stack one per row */
+@media (max-width: 600px) {
   .project {
-    width: 80%; /* 1 card per row */
+    flex: 1 1 100%;
   }
 }
-
   
   
 
