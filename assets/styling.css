@@ -1179,7 +1179,6 @@ img {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
   width: 100%;
   position: relative;
   top: 200px;
@@ -1187,15 +1186,15 @@ img {
 
 /* Each project card */
 .project {
-  border-radius: 8px;
+  border-radius: 0px;
   transition-duration: 0.6s;
   position: relative;
   background: var(--primary-color);
   overflow: hidden;
   width: calc(50% - 20px);
   min-width: 200px;
-  max-width: 500px;
-  height: 200px;
+  max-width: 600px;
+  height: 300px;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
   cursor: pointer;
   z-index: 5000;
@@ -1210,7 +1209,6 @@ img {
 .project img {
 
   width: 100%;
-  height: 100%;
   object-fit: cover;
 
   transition: opacity 0.5s ease;
