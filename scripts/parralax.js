@@ -1,4 +1,7 @@
+
+
 document.addEventListener("DOMContentLoaded", function () {
+  
   // Detect if it's mobile / small screen
   const isMobile = window.innerWidth < 768;
 
@@ -40,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ---------- 3) .continual-learning BLUR ----------
-    if (scrollY >= 1450) {
+    if (scrollY >= 550) {
       continualLearning.style.filter = "blur(0px)";
     } else {
       continualLearning.style.filter = "blur(10px)";
@@ -82,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   })
-
 
   
 });

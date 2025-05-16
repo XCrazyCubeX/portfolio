@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
           root.style.setProperty('--quatro-color', '#EDC9AF');
           
           root.style.setProperty('--scene-node-color', '#EDC9AF');
-          root.style.setProperty('--scene-connection-color', 'black');
+          root.style.setProperty('--scene-connection-color', '#ffffff');
           
           logo.src = 'assets/images/JT_light.png';
           vistaLogo.style.filter = "invert(1)";

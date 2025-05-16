@@ -1,3 +1,17 @@
+/* 
+TODO:
+1 center all sections aka education and experience. 20 min
+2 better interactivity for projects section. 40 min
+3 fix mobile responsiveness. 1 hour
+4 double check colors. 10 min
+5 optimize. 1 hour
+*/
+
+
+
+
+
+
 /* =================================== 
    GLOBAL 
 =================================== */
@@ -23,7 +37,7 @@
   
     /* 3D Scene theme colors for light mode */
     --scene-node-color: #4a4a4a;
-    --scene-connection-color: #0c0c0e;
+    --scene-connection-color: #ffffff;
 
     --scene-connection-color-dark: #8d8d8d;
     --scene-connection-color-light: #0c0c0e;
@@ -680,11 +694,11 @@
   }
   .about-title {
     transition-duration: 0.1s;
+    color: var(--secondary-color);
   }
   .about-content-container {
     position: relative;
-    padding: 20px;
-    width: 80%;
+    width: 100%;
     left: 50%;
     transform: translate(-50%);
     height: max-content;
@@ -730,6 +744,9 @@ img {
   display: flex;
   flex-direction: column;
   width: 95%;
+  background-color: transparent;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
 /* Heading */
@@ -879,14 +896,50 @@ img {
 
 }
 
+.persona-container {
+  position:relative;
+  width: 100vw;
+  height: auto;
+  padding: 20px 0px;
+}
 
-/* Experience Container */
+.persona-info p{
+  margin-top: 50px;
+  font-size: clamp(20px, 2vw, 3vw);
+  font-family: ss-taurus;
+  text-align: center;
+
+}
+
+/* Center the paragraph block and allow normal wrapping */
+.reveal-text {
+  width: 80%;             /* or set a fixed max-width if you prefer */
+  margin: 0 auto;         /* center on desktop */
+  text-align: center;     /* center the text inside */
+}
+
+/* Each character is inline‐block so opacity works per‐letter */
+.reveal-text .char {
+  opacity: 0.01;           /* starting opacity */
+  /* no white-space rules here—let the container handle wrapping */
+}
+
+
+/* each word lives in its own inline-block */
+
+
+/* 
+/* Experience Container 
 .experience-container {
   top: 100px;
-  width: 100%;
+  width: 100vw;
   position: relative;
-  border-radius: 10px;
   margin-bottom: 200px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .experience-container h1 {
@@ -894,21 +947,23 @@ img {
   position: relative;
   margin: 10px 0;
   font-size: clamp(18px, 1.7vw, 2.5vw);
-  text-align: left;
   color: var(--tertiary-color);
 
 }
 
-/* Experiences Wrapper */
+/* Experiences Wrapper 
 .experiences {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  text-align: center;
 }
 
-/* Individual Experience */
+/* Individual Experience 
 .experience {
+  
   display: flex;
   align-items: flex-start;
   gap: 20px;
@@ -921,7 +976,7 @@ img {
   transform: scale(1.02);
 }
 
-/* Experience Icon */
+/* Experience Icon
 .experience-icon {
   width: 50px;
   height: 50px;
@@ -937,14 +992,14 @@ img {
   font-size: 24px;
 }
 
-/* 📱 Mobile View: Icon Above Text */
+/* 📱 Mobile View: Icon Above Text 
 @media (max-width: 768px) {
   .experience {
-    flex-direction: column; /* Stack items vertically */
+    flex-direction: column; /* Stack items vertically 
   }
 }
 
-/* Experience Details */
+/* Experience Details 
 .experience-details {
   flex-grow: 1;
 }
@@ -986,7 +1041,7 @@ img {
   font-family: ss-taurus;
 
 }
-
+ */
 
   
   /* Continual-learning line */
@@ -995,7 +1050,6 @@ img {
     position: relative;
     display: flex;
     justify-content: center;
-    padding: 20px 0;
     border-radius: 10px;
     height: max-content;
     width: 100%;
@@ -1003,10 +1057,12 @@ img {
     transition-duration: 0.7s;
   }
   .continual-learning p {
-    font-size: clamp(18px, 2.3vw, 3vw);
+    opacity: 60%;
+    font-size: clamp(40px, 2.9vw, 3vw);
     text-transform: uppercase;
     color: var(--secondary-color);
-    font-family: ss-taurus;
+    font-family: taurus;
+    text-align: center;
   }
   .continual-learning p1 {
     font-size: clamp(12px, 0.6vw, 1.2vw);
@@ -1015,7 +1071,6 @@ img {
     left: 1.5%;
     color: var(--secondary-color);
     font-family: ss-taurus;
-    text-align: left;
     width: 20%;
   }
   
@@ -1029,16 +1084,25 @@ img {
     }
   }
   
-  /* Education container */
+  /* Education container
   .education-container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: 5px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 150px;
-    width: 95%;
+    margin-top: 350px;
+    width: 100vw;
     transition: box-shadow 0.8s ease;
-
+    backdrop-filter: blur(15px);
+    background-blend-mode: exclusion;
+    -webkit-backdrop-filter: blur(15px);
+    border-top-left-radius: 40%;
+    border-top-right-radius: 40%;
   }
 
   .pulse {
@@ -1048,27 +1112,30 @@ img {
   
   @keyframes pulse-animation {
     0% {
-      box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 0 0px rgba(223, 154, 154, 0.2);
     }
     100% {
       box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
   }}
   .education-item {
     position: relative;
-    margin-top: 0px;
+    margin-top: 40px;
     display: flex;
-    flex-direction: column;
+    flex-direction:row;
     flex-wrap: wrap;
-    background-color: transparent;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     border-radius: 10px;
     padding: 2% 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    left: 0%;
+    width: 800px;
   }
 
   .education-item img {
     width: min-content;
     margin-bottom: 10px;
+    
   }
 
   .education-item a {
@@ -1078,40 +1145,11 @@ img {
     margin-top: 10px;
     font-size: clamp(12px, 0.3vw, 0.8vw);
     position: relative;
-    left: 0%;
-    display: flex;
-    flex-direction: column;
-  }
-  /* Dropdown content is hidden by default */
-  .dropdown-content {
-    max-height: 0;
-    opacity: 1;
-    overflow: visible;
-    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  }
+    left: 3%;
+    width: 20vw;
 
-  .dropdown-content li a {
-    color: var(--primary-color);
   }
-
-  .dropdown-content li {
-    font-family: ss-taurus;
-    list-style:none;
-    text-decoration: none;
-    border: 2px solid var(--secondary-color);
-    width: max-content;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    padding: 10px 10px;
-    text-align: center;
-    background-color: var(--secondary-color);
-    transition-duration: 0.5s;
-  }
-  .dropdown-content li:hover {
-    transform: translateY(-20px)
-  }
-/* Hide dropdown by default */
-
+ 
 
 /* Show dropdown only when the specific education-item is active */
 .education-item.active .dropdown-content {
@@ -1120,23 +1158,29 @@ img {
 }
 
   .education-container h1 {
-    padding: 20px 0px;
-    font-family: ss-taurus;
-    font-size: clamp(15px, 1.8vw, 2vw);
-    color: var(--tertiary-color);
+    font-family: taurus;
+    font-weight: 100;
+    font-size: clamp(20px, 2.5vw, 5vw);
+    color: var(--secondary-color);
     position: relative;
+    text-align: center;
+    margin:40px 0px;
+
   }
   .education-container p1 {
     width: 100%;
     font-family: ss-taurus;
-    font-size: clamp(10px, 0.7vw, 1.4vw);
+    font-size: clamp(10px, 1vw, 1.4vw);
     color: var(--tertiary-color);
+    text-align: center;
+
   }
   .education-item p {
     margin: 50px 0;
     font-family: ss-taurus;
-    font-size: clamp(8px, 0.7vw, 1.2vw);
+    font-size: clamp(8px, 0.8vw, 1.2vw);
     color: var(--tertiary-color);
+    text-align: center;
   }
 
   .education-container hr {
@@ -1148,17 +1192,17 @@ img {
   .vista-logo {
     margin-top: 30px;
     width: auto;
-    height: 4vh;
+    height: 7vh;
     opacity: 90%;
   }
 
   .zuyd-logo {
     margin-top: 30px;
     width: auto;
-    height: 6vh;
+    height: 8vh;
     opacity: 90%;
   }
-  
+   */
   /* =================================== 
      PROJECTS SECTION (fixed centering)
   =================================== */
@@ -1166,7 +1210,7 @@ img {
   .projects-title {
     position: relative;
     transition-duration: 0s;
-    top: -30dvh;
+    top: 10dvh;
   }
 
   @media screen and (max-width: 500px) {
@@ -1182,7 +1226,7 @@ img {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;                /* spacing between cards */
-  top: 200px;
+  top: 1000px;
 }
 
 /* Each project card */
@@ -1212,6 +1256,7 @@ img {
 
 .project video,
 .project img {
+  position:  relative;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1243,7 +1288,7 @@ img {
 
 .project h1 {
   color: var(--quatro-color);
-
+  
   font-family: ss-taurus;
   font-size: 1.8rem; /* Scalable font size */
   margin-bottom: 0.5rem;

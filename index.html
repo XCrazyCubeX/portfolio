@@ -15,8 +15,12 @@
     <script src="scripts/loading.js" defer></script>
     <script src="scripts/render.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="scripts/parralax.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollSmoother.min.js"></script>
+<script src="scripts/parralax.js" defer></script>
+<script src="scripts/scroll.js" defer></script>
     <script src="scripts/navigation.js" defer></script>
     <!-- Font Awesome CDN -->
     <script src="https://kit.fontawesome.com/5e8a78e9e2.js" crossorigin="anonymous"></script>
@@ -30,7 +34,7 @@
 <!-- #region =================== miscellaneous items -->
 
     <!-- Background Effects -->
-    <div id="background-network"></div>
+    <div id="background-network" style="opacity: 60%"></div>
 
     <!-- Loading Screen
      
@@ -315,6 +319,18 @@
         
       </div>
       
+          <!-- random text -->
+    <div class="continual-learning">
+      <a><p>always continual learning</p></a> 
+      </div>
+  
+      <div class="persona-container">
+        <div class="persona-info">
+          <p class="reveal-text">
+            I’m a 20-year-old software developer, graphic &amp; UX/UI designer with a deep passion for artificial intelligence. I love blending clean, user-first design with cutting-edge code—whether I’m training reinforcement-learning agents, building responsive web apps, or sketching out a new interface. 
+          </p>
+        </div>
+      </div>
 
       
 
@@ -322,7 +338,7 @@
         starting from software development on 
         Vista college
     -->
-    <div class="education-container">
+    <!-- <div class="education-container">
     <h1>education</h1>
     <div class="education-item ed-1">
     <img id="vistaLogo" class="vista-logo" src="assets/images/vista_logo.png">
@@ -334,17 +350,8 @@
 
     <!-- Vista college software developer.
     this also includes a link to proof of b1 k1 and b1 k2
-    -->
-    <p>I pursued a Software Developer MBO 4 program at Vista College,
-    a four-year course that I successfully completed in just 2.5 years.
-    During this intensive period, I developed a strong foundation in web development,
-    mastering key programming languages and frameworks while building functional,
-    user-friendly applications. Beyond technical skills, the program also
-    enhanced my ability to communicate effectively, whether it 
-    as collaborating with peers, presenting projects, or understanding client needs.
-    This combination of technical expertise and interpersonal growth has prepared me to excel
-    in the dynamic field of software development.
-    </p>
+    
+
 
 
  
@@ -352,7 +359,7 @@
     </div>
 
 
-
+<!-- 
     <div class="education-item ed-2">
       <img id="zuyd_hogeschool" class="zuyd-logo" src="assets/images/222px-LogoZUYD.png">
       <div class="education-info">
@@ -361,22 +368,23 @@
       <p1>upcoming sept 2025</p1>
       </div>
   
-      <!-- Vista college software developer.
+      Vista college software developer.
       this also includes a link to proof of b1 k1 and b1 k2
-      -->
-      <p>Nothing to see here... yet
+     
       </p>
   
 
 
-    </div>
+    </div> 
+  </div> -->
 
-
+<!-- 
     
     <div class="experience-container">
-      <h1>experience</h1>
       <div class="experiences">
-        <!-- Experience 1: Vista College -->
+        <h1>experience</h1>
+
+        <!-- Experience 1: Vista College 
         <div class="experience">
           <div class="experience-icon">
             <img id="vistaLogoex" src="assets/images/vista_logo.png">
@@ -389,7 +397,7 @@
           </div>
         </div>
     
-        <!-- Experience 2: Zuyd Data Intelligence -->
+        <!-- Experience 2: Zuyd Data Intelligence =
         <div class="experience">
           <div class="experience-icon">
             <img src="assets/images/dilab.png">
@@ -402,14 +410,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <!-- random text -->
-    <div class="continual-learning">
-    <a><p>always continual learning</p></a> 
-    </div>
 
-    </div>
     </section>
     <!-- #endregion =================== -->
 
