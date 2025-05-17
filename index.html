@@ -32,8 +32,17 @@
 
 <!-- Header Section -->
 <header class="header">
+
   <a href="#" class="logo-link">
   <img class="logo" id="logo" src="assets/images/JT_dark.png" alt="Joyren Terken Logo"></a>
+  
+        <!-- Navigation Links -->
+        <nav class="navigation">
+          <ul class="nav-list">
+              <li><a href="#about-section" class="nav-link .about-link">About Me</a></li>
+              <li><a href="#projects-section" class="nav-link .projects-link">My Projects</a></li>
+          </ul>
+      </nav>
   <div class="header-right">
 
   <!-- Theme Switch -->
@@ -57,11 +66,24 @@
 <div class="menu-overlay" id="menu-overlay">
   <div class="menu-blur" id="menu-blur"></div>
   <!-- Menu Items -->
-  <div class="menu-item item-1" id="nav-home" style="--i: 1;"><a>Home</a></div>
-  <div class="menu-item item-2" id="nav-about" style="--i: 2;">About</div>
-  <div class="menu-item item-3" id="nav-projects" style="--i: 3;">Projects</div>
-  <div class="menu-item item-4" id="nav-contact" style="--i: 4;">Contact</div>
+  <div class="menu-item item-1" id="nav-about" style="--i: 1;"><a>about me</a></div>
+  <div class="menu-item item-2" id="nav-projects" style="--i: 2;">projects</div>
+
 </div>
+
+
+      <!-- End Social Icons -->
+  <!-- FIX: Use id="smooth-wrapper" (NOT class) -->
+  <div id="smooth-wrapper">
+    
+    <div id="smooth-content">
+
+
+<main>
+  
+    <!-- #region Home Section -->
+    <section id="home-section" class="section active">
+
     <!-- Social Icons -->
     <div class="social-icons">
 
@@ -100,18 +122,6 @@
           <p>resume</p>
       </a>
       </div>
-      <!-- End Social Icons -->
-  <!-- FIX: Use id="smooth-wrapper" (NOT class) -->
-  <div id="smooth-wrapper">
-    <div id="smooth-content">
-
-
-<main>
-    <!-- #region Home Section -->
-    <section id="home-section" class="section active">
-
-
-
     <!-- Hero Section -->
     <section class="hero-section">
         <h1>
@@ -120,19 +130,14 @@
         <h1>
             but you can call me <span class="highlight-nickname">Joy</span>
         </h1>
-        <p class="hero-description">
+       <p class="hero-description">
             I’m a graphic designer, UX/UI designer, and developer specializing in artificial intelligence
         </p>
 
-        <!-- Navigation Links -->
-        <nav class="navigation">
-            <ul class="nav-list">
-                <li><a href="#about-section" class="nav-link .about-link">About Me</a></li>
-                <li><a href="#projects-section" class="nav-link .projects-link">My Projects</a></li>
-            </ul>
-        </nav>
         
     </section>
+    
+
     <!-- End Hero Section -->
     </section>
     <!-- End Home Section -->
@@ -146,9 +151,9 @@
 
             <div class="persona-container">
                 <div class="persona-info">
-                    <p class="reveal-text">
+                    <a><p class="reveal-text">
                         I’m a 20-year-old software developer, graphic &amp; UX/UI designer with a deep passion for artificial intelligence.
-                    </p>
+                    </p></a>
                 </div>
             </div>
 
@@ -275,9 +280,8 @@
     <!-- End About Section -->
             <!-- End skills-container -->
 
-    <!-- random text, blank, etc -->
-    <div class="blank"></div>
-    <footer class="footer"></footer>
+      <!-- random text, blank, etc -->
+      <div class="blank"></div>
     <!-- Add more sections here: Projects, Contact, etc, as needed -->
 
 </main>

@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const y = window.scrollY;
       // about-title parallax
       if (aboutTitle) {
-        const speed = isMobile ? 0.6 : 0.3;
+        const speed = isMobile ? 0.2: 0.2;
         aboutTitle.style.transform = `translateY(${-y * speed}px)`;
       }
       // skill bars
@@ -125,6 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const container      = qs("#background-network");
     const loadingScreen  = qs(".loading-screen");
     const headerEl       = qs(".header");
+    const footerEl       = qs(".footer");
     const allSections    = qsa("section");
     const logo           = qs("#logo");
     const vistaLogo      = qs("#vistaLogo");
@@ -239,6 +240,8 @@ document.addEventListener("DOMContentLoaded", () => {
       allSections.forEach(s => s.classList.add("visible"));
       loadingScreen.style.opacity = "0";
       headerEl.style.opacity = "1";
+      footerEl.style.opacity = "1",
+    
       qs(".hero-section")?.classList.add("animate-slide-in");
       qs(".navigation-container")?.classList.add("animate-slide-in");
       setupScrollZoom();
@@ -308,51 +311,49 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("GSAP / ScrollTrigger not found");
       return;
     }
-    gsap.registerPlugin(ScrollSmoother,ScrollTrigger);
-    
-
+    gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
   
+    // — TEXT REVEAL SETUP —
     const container = document.querySelector(".persona-container");
-    const p         = container?.querySelector("p.reveal-text");
-    if (!container || !p) return;
-  
-    // wrap letters
-    const text = p.textContent;
-    p.textContent = "";
-    const chars = [];
-    for (const ch of text) {
-      if (ch === " ") {
-        p.appendChild(document.createTextNode(" "));
-      } else {
-        const span = document.createElement("span");
-        span.className = "char";
-        span.textContent = ch;
-        p.appendChild(span);
-        chars.push(span);
+    const p = container?.querySelector("p.reveal-text");
+    if (container && p) {
+      const text = p.textContent;
+      p.textContent = "";
+      const chars = [];
+      for (const ch of text) {
+        if (ch === " ") {
+          p.appendChild(document.createTextNode(" "));
+        } else {
+          const span = document.createElement("span");
+          span.className = "char";
+          span.textContent = ch;
+          p.appendChild(span);
+          chars.push(span);
+        }
       }
+  
+      gsap.set(chars, { opacity: 0.1 });
+      gsap.to(chars, {
+        opacity: 1,
+        ease: "none",
+        stagger: 0.06,
+        scrollTrigger: {
+          trigger: container,
+          start: "top 50%",
+          end: "bottom 5%",
+          scrub: 0.5
+        }
+      });
     }
   
-    gsap.set(chars, { opacity: 0.1 });
-    gsap.to(chars, {
-      opacity: 1,
-      ease: "none",
-      stagger: 0.06,
-      scrollTrigger: {
-        trigger: container,
-        start: "top 20%",
-        end:   "bottom 5%",
-        scrub: 0.5
-      }
-    });
-
-    
+    // — SCROLLSMOOTHER SETUP —
     ScrollSmoother.create({
-        wrapper: ".smooth-wrapper",
-        content: "#smooth-content",
-        smooth: 3,
-        smooThouch: 3
-      });
+      wrapper: "#smooth-wrapper",
+      content: "#smooth-content",
+      smooth: 1.2,
+      smoothTouch: 0.1
+    });
     
-    
+    ScrollTrigger.refresh();
+
   });
-  
