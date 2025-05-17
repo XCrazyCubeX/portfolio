@@ -338,7 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ease: "none",
       stagger: 0.06,
       scrollTrigger: {
-        trigger: coWntainer,
+        trigger: container,
         start: "top 30%",
         end:   "bottom 5%",
         scrub: 0.5
@@ -350,7 +350,7 @@ document.addEventListener("DOMContentLoaded", () => {
         wrapper: ".smooth-wrapper",
         content: "#smooth-content",
         smooth: 3,
-        smoothTouch: 3
+        smooThouch: 3
       });
     
     
