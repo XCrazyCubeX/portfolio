@@ -339,7 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
       stagger: 0.06,
       scrollTrigger: {
         trigger: container,
-        start: "top 30%",
+        start: "top 20%",
         end:   "bottom 5%",
         scrub: 0.5
       }

@@ -151,7 +151,6 @@ TODO:
   flex-direction: row;
   justify-content: center;
   top: 80%;
-  z-index: 5;
   transition-duration: 0.4s;
   
   
@@ -173,6 +172,8 @@ TODO:
   flex-direction: column;
   align-items: center;
   text-decoration: none;
+  z-index: 5;
+
 }
 
 .icon-link:hover p {
@@ -350,9 +351,8 @@ TODO:
     position: fixed;
     top: 0%;
     width: 100vw;
-    padding: 1rem;
+    padding: 2rem;
     background-color: var(--primary-color);
-    border-bottom: 2px solid var(--secondary-color);
     background-color: transparent;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -927,10 +927,11 @@ img {
 }
 
 .persona-container {
+  z-index:  99;
   position:relative;
   width: 100vw;
   height: auto;
-  padding: 2vh 0px;
+  padding: 100px 0px;
 }
 
 .persona-info p{
@@ -958,8 +959,10 @@ img {
 
 
 .blank {
+  background-color: transparent;
   width: 100vw;
-  height: 6000px;;
+  height: 400px;;
+  position:relative;
 }
   
   /* Continual-learning line */
