@@ -1,5 +1,8 @@
 // main.js
 document.addEventListener("DOMContentLoaded", () => {
+
+    
+
     // —— CUSTOM CURSOR —— 
     const cursor = document.querySelector(".custom-cursor");
     if (cursor) {
@@ -17,6 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   
     // —— HAMBURGER MENU & NAVIGATION —— 
+    // ———————————————————————————————————————
+
     const hamburger = document.getElementById("menu-icon");
     const overlay   = document.getElementById("menu-overlay");
     const blurEl    = document.getElementById("menu-blur");
@@ -61,6 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   
     // —— PARALLAX & SCROLL EFFECTS —— 
+    // ———————————————————————————————————————
+
     const isMobile = innerWidth < 768;
     const aboutTitle    = document.querySelector(".about-title");
     const projectsTitle = document.querySelector(".projects-title");
@@ -108,6 +115,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   
     // —— three.js NETWORK BACKGROUND —— 
+    // ———————————————————————————————————————
+
     // Helpers
     const qs  = s => document.querySelector(s);
     const qsa = s => [...document.querySelectorAll(s)];
@@ -292,12 +301,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
   // —— GSAP-BASED TEXT REVEAL (on window load) —— 
+  // ———————————————————————————————————————
+
   window.addEventListener("load", () => {
     if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
       console.error("GSAP / ScrollTrigger not found");
       return;
     }
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollSmoother,ScrollTrigger);
+    
+
   
     const container = document.querySelector(".persona-container");
     const p         = container?.querySelector("p.reveal-text");
@@ -323,13 +336,22 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.to(chars, {
       opacity: 1,
       ease: "none",
-      stagger: 0.03,
+      stagger: 0.06,
       scrollTrigger: {
         trigger: container,
-        start: "top 85%",
-        end:   "bottom 15%",
+        start: "top 30%",
+        end:   "bottom 5%",
         scrub: 0.5
       }
     });
+
+    
+    ScrollSmoother.create({
+        wrapper: ".smooth-wrapper",
+        content: "#smooth-content",
+        smooth: 1,
+      });
+    
+    
   });
   
