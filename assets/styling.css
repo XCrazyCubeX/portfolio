@@ -111,6 +111,7 @@ TODO:
     top: 100px;
     width: 60%;
     min-width: 200px;
+    z-index: 0;
   }
   .title hr {
     width: 100%;
@@ -138,8 +139,9 @@ TODO:
   flex-direction: row;
   justify-content: center;
   top: 80%;
-  z-index: 2000;
+  z-index: 5;
   transition-duration: 0.4s;
+  
   
 }
 
@@ -151,6 +153,7 @@ TODO:
   transition: opacity 0.3s ease-in-out;
   text-align: center;
   margin-top: 5px;
+
 }
 
 .icon-link {
@@ -323,6 +326,8 @@ TODO:
   /* =================================== 
      HEADER
   =================================== */
+
+
   .header {
     opacity: 0;
     pointer-events: none;
@@ -331,22 +336,38 @@ TODO:
     justify-content: space-between;
     z-index: 9999;
     position: fixed;
-    top: 3%;
+    top: 0%;
     width: 100vw;
-    padding: 3rem;
+    padding: 2rem;
+    background-color: var(--primary-color);
+    background-color: transparent;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
   }
   .header-right {
     position: relative;
-    right: 13%;
+    right: 5%;
     display: flex;
     align-items: center;
+  }
+
+  .footer {
+    padding: 1rem;
+    width: 100vw;
+    position: fixed;
+    top: 100%;
+    border-top: 2px solid var(--secondary-color);
+    background-color: transparent;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 9999;
+
   }
   
   .logo {
     pointer-events: all;
     z-index: 1000;
-    float: left;
-    left: 100%;
+    left: 8%;
     position: relative;
     width: 8vw;
     max-width: 50px;
@@ -497,7 +518,6 @@ TODO:
      HERO CONTENT
   =================================== */
   .hero-section {
-    z-index: 1000;
     position: relative;
     width: 70%;
     margin: auto;
@@ -509,14 +529,14 @@ TODO:
     font-family: taurus;
     font-weight: 100;
     text-transform: uppercase;
-    font-size: clamp(18px, 2.4vw, 3vw);
+    font-size: clamp(25px, 3.5vw, 4.5vw);
     text-align: center;
   }
   .hero-section h1 span {
     font-family: ss-taurus;
     font-weight: 600;
     color: var(--secondary-color);
-    font-size: clamp(21px, 3.2vw, 4vw);
+    font-size: clamp(30px, 4vw, 5vw);
   }
   .hero-section p {
     margin: 20px 0;
@@ -689,35 +709,34 @@ TODO:
   /* Correct ID from #about-secion -> #about-section (if needed) */
   #about-section {
     position: relative;
-    width: 100dvw;
+    width: 100vw;
     height: max-content;
+      background-color: transparent;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   }
   .about-title {
+    position: relative;
+
     transition-duration: 0.1s;
-    color: var(--secondary-color);
+    font-size: clamp(40px, 5vw, 5vw);
+    text-transform: uppercase;
+    color: var(--tertiary-color);
+    font-family: ss-taurus;
+    font-weight: 100;
+    z-index: 0;
+    top: -100px;
   }
   .about-content-container {
     position: relative;
+    z-index: 100;
     width: 100%;
     left: 50%;
-    transform: translate(-50%);
-    height: max-content;
-    z-index: 2000;
-    background: transparent;
-    border-radius: 6px;
-
-  }
-  .about-content-container p {
-    font-size: clamp(14px, 1.3vw, 2vw);
-    text-transform: uppercase;
-    color: var(--tertiary-color);
-    font-family: mono;
-    position: relative;
-    left: 50%;
     transform: translateX(-50%);
-    text-align: left;
-    margin: 10px;
-    top: 20px;
+    background-color: var(--primary-color);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 6px;
   }
 
 
@@ -735,7 +754,6 @@ img {
 
 /* Skills Container */
 .skills-container {
-  top: 50px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -842,7 +860,7 @@ img {
   font-size: clamp(30px, 1.8vw, 1.8vw);
   margin-bottom: 10px;    /* Space between icon and label */
   display: inline-block;
-  color: var(--tertiary-color);
+  color: var(--secondary-color);
   
 }
 .icon-container-alt svg {
@@ -856,7 +874,7 @@ img {
 
 .icon-container-alt span {
   font-size: clamp(10px, 0.4vw, 1.8vw);
-  color: var(--tertiary-color);
+  color: var(--secondary-color);
   text-align: center;
 }
 
@@ -900,20 +918,22 @@ img {
   position:relative;
   width: 100vw;
   height: auto;
-  padding: 20px 0px;
+  margin: 150px 0px;
 }
 
 .persona-info p{
   margin-top: 50px;
-  font-size: clamp(20px, 2vw, 3vw);
-  font-family: ss-taurus;
+  font-size: clamp(20px, 4vw, 5vw);
+  font-family: mono;
   text-align: center;
+  font-weight: 100;
+  color: var(--tertiary-color);
 
 }
 
 /* Center the paragraph block and allow normal wrapping */
 .reveal-text {
-  width: 80%;             /* or set a fixed max-width if you prefer */
+  width: 90%;             /* or set a fixed max-width if you prefer */
   margin: 0 auto;         /* center on desktop */
   text-align: center;     /* center the text inside */
 }
@@ -925,124 +945,10 @@ img {
 }
 
 
-/* each word lives in its own inline-block */
-
-
-/* 
-/* Experience Container 
-.experience-container {
-  top: 100px;
+.blank {
   width: 100vw;
-  position: relative;
-  margin-bottom: 200px;
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
+  height: 6000px;;
 }
-
-.experience-container h1 {
-  font-family: ss-taurus;
-  position: relative;
-  margin: 10px 0;
-  font-size: clamp(18px, 1.7vw, 2.5vw);
-  color: var(--tertiary-color);
-
-}
-
-/* Experiences Wrapper 
-.experiences {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  text-align: center;
-}
-
-/* Individual Experience 
-.experience {
-  
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  margin-top: 30px;
-  border-radius: 8px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.experience:hover {
-  transform: scale(1.02);
-}
-
-/* Experience Icon
-.experience-icon {
-  width: 50px;
-  height: 50px;
-  min-width: 50px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.experience-icon i {
-  color: var(--tertiary-color);
-  font-size: 24px;
-}
-
-/* 📱 Mobile View: Icon Above Text 
-@media (max-width: 768px) {
-  .experience {
-    flex-direction: column; /* Stack items vertically 
-  }
-}
-
-/* Experience Details 
-.experience-details {
-  flex-grow: 1;
-}
-
-.experience-details h3 {
-  font-size: clamp(12px, 1.3vw, 2.5vw);
-  color: var(--tertiary-color);
-  margin-bottom: 30px;
-  font-family: ss-taurus;
-  position: relative;
-  top: 5px;
-  
-}
-
-.experience-details h4 {
-  font-size: clamp(9px, 0.5vw, 1.1vw);
-  color: var(--tertiary-color);
-  margin-bottom: 5px;
-  font-family: ss-taurus;
-
-}
-
-.date {
-  font-size: clamp(9px, 0.5vw, 1.1vw);
-  color: var(--tertiary-color);
-  margin-bottom: 10px;
-  font-family: ss-taurus;
-
-}
-
-.date i {
-  margin-right: 5px;
-}
-
-.experience-details p {
-  font-size: clamp(12px, 0.9vw, 1.4vw);
-  color: var(--tertiary-color);
-  line-height: 1.5;
-  font-family: ss-taurus;
-
-}
- */
-
   
   /* Continual-learning line */
   .continual-learning {
@@ -1063,6 +969,7 @@ img {
     color: var(--secondary-color);
     font-family: taurus;
     text-align: center;
+
   }
   .continual-learning p1 {
     font-size: clamp(12px, 0.6vw, 1.2vw);
@@ -1083,287 +990,3 @@ img {
       right: 15%;
     }
   }
-  
-  /* Education container
-  .education-container {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 350px;
-    width: 100vw;
-    transition: box-shadow 0.8s ease;
-    backdrop-filter: blur(15px);
-    background-blend-mode: exclusion;
-    -webkit-backdrop-filter: blur(15px);
-    border-top-left-radius: 40%;
-    border-top-right-radius: 40%;
-  }
-
-  .pulse {
-    animation: pulse-animation 2s infinite;
-
-  }
-  
-  @keyframes pulse-animation {
-    0% {
-      box-shadow: 0 0 0 0px rgba(223, 154, 154, 0.2);
-    }
-    100% {
-      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
-  }}
-  .education-item {
-    position: relative;
-    margin-top: 40px;
-    display: flex;
-    flex-direction:row;
-    flex-wrap: wrap;
-    border-radius: 10px;
-    padding: 2% 20px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    left: 0%;
-    width: 800px;
-  }
-
-  .education-item img {
-    width: min-content;
-    margin-bottom: 10px;
-    
-  }
-
-  .education-item a {
-    width: 100%;
-  }
-  .education-info {
-    margin-top: 10px;
-    font-size: clamp(12px, 0.3vw, 0.8vw);
-    position: relative;
-    left: 3%;
-    width: 20vw;
-
-  }
- 
-
-/* Show dropdown only when the specific education-item is active */
-.education-item.active .dropdown-content {
-  max-height: 800px;
-  opacity: 1;
-}
-
-  .education-container h1 {
-    font-family: taurus;
-    font-weight: 100;
-    font-size: clamp(20px, 2.5vw, 5vw);
-    color: var(--secondary-color);
-    position: relative;
-    text-align: center;
-    margin:40px 0px;
-
-  }
-  .education-container p1 {
-    width: 100%;
-    font-family: ss-taurus;
-    font-size: clamp(10px, 1vw, 1.4vw);
-    color: var(--tertiary-color);
-    text-align: center;
-
-  }
-  .education-item p {
-    margin: 50px 0;
-    font-family: ss-taurus;
-    font-size: clamp(8px, 0.8vw, 1.2vw);
-    color: var(--tertiary-color);
-    text-align: center;
-  }
-
-  .education-container hr {
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-
-
-  .vista-logo {
-    margin-top: 30px;
-    width: auto;
-    height: 7vh;
-    opacity: 90%;
-  }
-
-  .zuyd-logo {
-    margin-top: 30px;
-    width: auto;
-    height: 8vh;
-    opacity: 90%;
-  }
-   */
-  /* =================================== 
-     PROJECTS SECTION (fixed centering)
-  =================================== */
-
-  .projects-title {
-    position: relative;
-    transition-duration: 0s;
-    top: 10dvh;
-  }
-
-  @media screen and (max-width: 500px) {
-    .projects-title {
-      top: -100dvh
-    }
-  }
-  
-/* Container uses flex to center items */
-.projects-container {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;                /* spacing between cards */
-  top: 1000px;
-}
-
-/* Each project card */
-.project {
-  flex: 1 1 calc(50% - 20px); /* two cards per row, minus gap */
-
-  border-radius: 0px;
-  transition-duration: 0.6s;
-  position: relative;
-  background: var(--primary-color);
-  overflow: hidden;
-  width: calc(50% - 20px);
-  min-width: 200px;
-  max-width: max-content;
-  height: 300px;
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-  cursor: pointer;
-  z-index: 5000;
-}
-
-.project:hover {
-  transform: scale(1.05);
-  box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.3);
-}
-
-/* Project images */
-
-.project video,
-.project img {
-  position:  relative;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.5s ease;
-}
-/* Hover content */
-.project-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  inset: 0; /* top/right/bottom/left: 0 */
-
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8); /* Dark background with opacity */
-  color: var(--tertiary-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  opacity: 0; /* Hidden by default */
-  transition: opacity 0.5s ease;
-  border-radius: 10px;
-}
-
-.project:hover .project-content,.project:hover {
-  opacity: 1; /* Make content visible on hover */
-}
-
-.project h1 {
-  color: var(--quatro-color);
-  
-  font-family: ss-taurus;
-  font-size: 1.8rem; /* Scalable font size */
-  margin-bottom: 0.5rem;
-}
-
-.project p1 {
-  color: var(--quatro-color);
-
-  text-align: center;
-  font-family: ss-taurus;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-.project p {
-  font-family: ss-taurus;
-  font-size: 0.7rem;
-  text-align: center;
-  margin-top: 1rem;
-  width: 80%;
-  color: var(--quatro-color);
-}
-
-.project li {
-  list-style: none;
-
-}
-
-.project li a {
-  font-family: ss-taurus;
-  font-size: 1rem;
-  text-decoration: underline;
-  color: var(--quatro-color);
-  margin-top: 0.5rem;
-}
-
-.project li a:hover {
-
-  font-size: 1.2rem;
-}
-
-/* Responsive layout adjustments */
-@media screen and (max-width: 1024px) {
-  .project {
-    width: calc(50% - 20px); /* 2 cards per row */
-  }
-}
-
-/* Media query for smaller screens—stack one per row */
-@media (max-width: 600px) {
-  .project {
-    flex: 1 1 100%;
-  }
-}
-  
-  
-
-  
-  /* =================================== 
-     CONTACT SECTION
-  =================================== */
-  #contact-section {
-    position: relative;
-    top: 300px;
-    display: flex;
-    justify-content: center;
-  }
-
-.email {
-  position: absolute;
-  top: 80%;
-  margin: 10px;
-  font-family: ss-taurus;
-  font-size: clamp(16px, 1.3vw, 2.6vw);
-  color: var(--tertiary-color);
-  list-style: none;
-
-}

@@ -11,57 +11,31 @@
     <!-- Favicon -->
     <link rel="icon" href="assets/images/JT_light.png">
 
-    <script src="scripts/cursor.js" defer></script>
-    <script src="scripts/loading.js" defer></script>
-    <script src="scripts/render.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollSmoother.min.js"></script>
-<script src="scripts/parralax.js" defer></script>
-<script src="scripts/scroll.js" defer></script>
-    <script src="scripts/navigation.js" defer></script>
-    <!-- Font Awesome CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollSmoother.min.js"></script>
+
+    <script src="scripts/app.js"></script>
     <script src="https://kit.fontawesome.com/5e8a78e9e2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">  
-
-
 </head>
 <body>
 
-<!-- #region =================== miscellaneous items -->
+<!-- Background Effects -->
+<div id="background-network" style="opacity: 80%"></div>
+<div class="loading-screen"></div>
+<div class="background-noise"></div>
+<div class="custom-cursor"></div>
 
-    <!-- Background Effects -->
-    <div id="background-network" style="opacity: 60%"></div>
+<!-- Header Section
+this section contains logo,
+theme toggle and hamburger menu
+-->
 
-    <!-- Loading Screen
-     
-    This is the container that holds the
-    3D three.js neural network background
-    -->
-    <div class="loading-screen">
-
-    </div>
-
-    <!-- Noise Effect -->
-    <div class="background-noise"></div>
-
-    <!-- Custom Cursor -->
-    <div class="custom-cursor"></div>
-
-<!-- #endregion =================== -->
-
-<!-- #region =================== header items -->
-
-    <!-- Header Section
-    this section contains logo,
-    theme toggle and hamburger menu
-    -->
-
-    <!-- header -->
-    <header class="header">
+<!-- header -->
+<header class="header">
     <a href="#" class="logo-link">
     <img class="logo" id="logo" src="assets/images/JT_dark.png" alt="Joyren Terken Logo"></a>
     <div class="header-right">
@@ -81,17 +55,23 @@
     <span class="menu-line"></span>
     </div></a>
     </div>
-    </header>
+</header>
 
-<!-- #endregion =================== -->
-
-<!-- #region  =================== main items -->
+    
+    <!-- Hamburger Menu Content -->
+    <div class="menu-overlay" id="menu-overlay">
+    <div class="menu-blur" id="menu-blur"></div>
+    <!-- Menu Items -->
+    <div class="menu-item item-1" id="nav-home" style="--i: 1;"><a>Home</a></div>
+    <div class="menu-item item-2" id="nav-about" style="--i: 2;">About</div>
+    <div class="menu-item item-3" id="nav-projects" style="--i: 3;">Projects</div>
+    <div class="menu-item item-4" id="nav-contact" style="--i: 4;">Contact</div>
+    </div>
 
     <main>
 
     <!-- #region Home Section -->
     <section id="home-section" class="section active">
-
 
     <!-- social icons lay here
     includes github, instagram,
@@ -146,15 +126,6 @@
     </a>
     </div>
 
-
-
-    <!-- start of all sections
-        this includes hero section, about section,
-        projects section and contact section
-    -->
-
-
-
     <!-- Hero Section 
     first section there is to see
     includes a href to about me and projects.
@@ -179,15 +150,13 @@
     </ul>
     </nav>
     </section>
-    <!-- #endregion =================== -->
-
-
-    <!-- #region About Section --!>
 
     <!--
     includes my skills and my education,
     this is where proof of concept lies for my exam.
     -->
+    <!-- <hr> -->
+
     <section id="about-section" class="section">
     <div class="title">
     <h1 class="about-title">about me</h1>
@@ -195,398 +164,156 @@
 
     <div class="about-content-container">
 
-      <div class="skills-container">
 
-        <!-- Row 1: 5 items -->
-        <div class="marquee-horizontal-large">
-          <div class="marquee-cover-horizontal"></div>
-          <div class="track-horizontal">
-            <!-- First copy -->
-            <div class="flex-horizontal">
-               <div class="icon-container-alt">
-                 <i class="fab fa-html5"></i>
-                 <span>HTML</span>
-               </div>
-               <div class="spacer-30"></div>
-               <div class="icon-container-alt">
-                 <i class="fab fa-css3-alt"></i>
-                 <span>CSS</span>
-               </div>
-               <div class="spacer-30"></div>
-               <div class="icon-container-alt">
-                 <i class="fab fa-js"></i>
-                 <span>js</span>
-               </div>
-               <div class="spacer-30"></div>
-               <div class="icon-container-alt">
-                 <i class="fab fa-react"></i>
-                 <span>React</span>
-               </div>
-               <div class="spacer-30"></div>
-               <div class="icon-container-alt">
-                 <i class="fab fa-figma"></i>
-                 <span>UI/UX</span>
-               </div>
-               <!-- Extra spacer at end of first copy -->
-               <div class="spacer-30"></div>
-            </div>
-            <!-- Duplicate copy for seamless scrolling -->
-            <div class="flex-horizontal">
-               <div class="icon-container-alt">
-                 <i class="fab fa-html5"></i>
-                 <span>HTML</span>
-               </div>
-               <div class="spacer-30"></div>
-               <div class="icon-container-alt">
-                 <i class="fab fa-css3-alt"></i>
-                 <span>CSS</span>
-               </div>
-               <div class="spacer-30"></div>
-               <div class="icon-container-alt">
-                 <i class="fab fa-js"></i>
-                 <span>js</span>
-               </div>
-               <div class="spacer-30"></div>
-               <div class="icon-container-alt">
-                 <i class="fab fa-react"></i>
-                 <span>React</span>
-               </div>
-               <div class="spacer-30"></div>
-               <div class="icon-container-alt">
-                 <i class="fas fa-paint-roller"></i>
-                 <span>UI/UX</span>
-               </div>
-               <!-- Extra spacer at end of duplicate copy -->
-               <div class="spacer-30"></div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Row 2: 4 items (reverse direction for variety) -->
-        <div class="marquee-horizontal-large">
-          <div class="marquee-cover-horizontal"></div>
-          <div class="track-horizontal-alt">
-            <!-- First copy -->
-            <div class="flex-horizontal">
-               <div class="icon-container-alt">
-                <i class="fas fa-robot"></i>
-                 <span>AI</span>
-               </div>
-               <div class="spacer-30"></div>
-               <div class="icon-container-alt">
-                 <i class="fas fa-microchip"></i>
-                 <span>Hardware</span>
-               </div>
-               <div class="spacer-30"></div>
-               <div class="icon-container-alt">
-                 <i class="fab fa-github"></i>
-                 <span>Git</span>
-               </div>
-               <div class="spacer-30"></div>
-               <div class="icon-container-alt">
-                 <i class="fas fa-users"></i>
-                 <span>SCRUM</span>
-               </div>
-               <!-- Extra spacer at end of first copy -->
-               <div class="spacer-30"></div>
-            </div>
-            <!-- Duplicate copy for seamless scrolling -->
-            <div class="flex-horizontal">
-               <div class="icon-container-alt">
-                <i class="fas fa-robot"></i>
-                 <span>AI</span>
-               </div>
-               <div class="spacer-30"></div>
-               <div class="icon-container-alt">
-                 <i class="fas fa-microchip"></i>
-                 <span>Hardware</span>
-               </div>
-               <div class="spacer-30"></div>
-               <div class="icon-container-alt">
-                 <i class="fab fa-github"></i>
-                 <span>Git</span>
-               </div>
-               <div class="spacer-30"></div>
-               <div class="icon-container-alt">
-                 <i class="fas fa-users"></i>
-                 <span>SCRUM</span>
-               </div>
-               <!-- Extra spacer at end of duplicate copy -->
-               <div class="spacer-30"></div>
-            </div>
-          </div>
-        </div>
-        
+      <div class="persona-container">
+      <div class="persona-info">
+      <p class="reveal-text">
+      I’m a 20-year-old software developer, graphic &amp; UX/UI designer with a deep passion for artificial intelligence.
+      </p>
       </div>
+      </div>
+
+
+    <div class="skills-container">
+
+  <!-- Row 1: 5 items -->
+    <div class="marquee-horizontal-large">
+    <div class="marquee-cover-horizontal"></div>
+    <div class="track-horizontal">
+
+    <!-- First copy -->
+    <div class="flex-horizontal">
+    <a href="#" class="icon-container-alt">
+    <i class="fab fa-html5"></i>
+    <span>HTML</span>
+    </a>
+    <div class="spacer-30"></div>
+    <a href="#" class="icon-container-alt">
+    <i class="fab fa-css3-alt"></i>
+    <span>CSS</span>
+    </a>
+    <div class="spacer-30"></div>
+    <a href="#" class="icon-container-alt">
+    <i class="fab fa-js"></i>
+    <span>JS</span>
+    </a>
+    <div class="spacer-30"></div>
+    <a href="#" class="icon-container-alt">
+    <i class="fab fa-react"></i>
+    <span>React</span>
+    </a>
+    <div class="spacer-30"></div>
+    <a href="#" class="icon-container-alt">
+    <i class="fab fa-figma"></i>
+    <span>UI/UX</span>
+    </a>
+    <div class="spacer-30"></div>
+    </div>
+
+    <!-- Duplicate copy for seamless scrolling -->
+    <div class="flex-horizontal">
+    <a href="#" class="icon-container-alt">
+    <i class="fab fa-html5"></i>
+    <span>HTML</span>
+    </a>
+    <div class="spacer-30"></div>
+    <a href="#" class="icon-container-alt">
+    <i class="fab fa-css3-alt"></i>
+    <span>CSS</span>
+    </a>
+    <div class="spacer-30"></div>
+    <a href="#" class="icon-container-alt">
+    <i class="fab fa-js"></i>
+    <span>JS</span>
+    </a>
+    <div class="spacer-30"></div>
+    <a href="#" class="icon-container-alt">
+    <i class="fab fa-react"></i>
+    <span>React</span>
+    </a>
+    <div class="spacer-30"></div>
+    <a href="#" class="icon-container-alt">
+    <i class="fas fa-paint-roller"></i>
+    <span>UI/UX</span>
+    </a>
+    <div class="spacer-30"></div>
+    </div>
+
+    </div>
+    </div>
+
+    <!-- Row 2: 4 items (reverse direction for variety) -->
+    <div class="marquee-horizontal-large">
+    <div class="marquee-cover-horizontal"></div>
+    <div class="track-horizontal-alt">
+
+    <!-- First copy -->
+    <div class="flex-horizontal">
+    <a href="#" class="icon-container-alt">
+    <i class="fas fa-robot"></i>
+    <span>AI</span>
+    </a>
+    <div class="spacer-30"></div>
+    <a href="#" class="icon-container-alt">
+    <i class="fas fa-microchip"></i>
+    <span>Hardware</span>
+    </a>
+    <div class="spacer-30"></div>
+    <a href="#" class="icon-container-alt">
+    <i class="fab fa-github"></i>
+    <span>Git</span>
+    </a>
+    <div class="spacer-30"></div>
+    <a href="#" class="icon-container-alt">
+    <i class="fas fa-users"></i>
+    <span>SCRUM</span>
+    </a>
+    <div class="spacer-30"></div>
+    </div>
+
+    <!-- Duplicate copy for seamless scrolling -->
+    <div class="flex-horizontal">
+    <a href="#" class="icon-container-alt">
+    <i class="fas fa-robot"></i>
+    <span>AI</span>
+    </a>
+    <div class="spacer-30"></div>
+    <a href="#" class="icon-container-alt">
+    <i class="fas fa-microchip"></i>
+    <span>Hardware</span>
+    </a>
+    <div class="spacer-30"></div>
+    <a href="#" class="icon-container-alt">
+    <i class="fab fa-github"></i>
+    <span>Git</span>
+    </a>
+    <div class="spacer-30"></div>
+    <a href="#" class="icon-container-alt">
+    <i class="fas fa-users"></i>
+    <span>SCRUM</span>
+    </a>
+    <div class="spacer-30"></div>
+    </div>
+
+    </div>
+    </div>
+
+    </div>
+
       
-          <!-- random text -->
-    <div class="continual-learning">
+    <!-- random text -->
+    <!-- <div class="continual-learning">
       <a><p>always continual learning</p></a> 
       </div>
-  
-      <div class="persona-container">
-        <div class="persona-info">
-          <p class="reveal-text">
-            I’m a 20-year-old software developer, graphic &amp; UX/UI designer with a deep passion for artificial intelligence. I love blending clean, user-first design with cutting-edge code—whether I’m training reinforcement-learning agents, building responsive web apps, or sketching out a new interface. 
-          </p>
-        </div>
-      </div>
-
-      
-
-    <!-- education container displays all my educations earned.
-        starting from software development on 
-        Vista college
     -->
-    <!-- <div class="education-container">
-    <h1>education</h1>
-    <div class="education-item ed-1">
-    <img id="vistaLogo" class="vista-logo" src="assets/images/vista_logo.png">
-    <div class="education-info">
-    <p1>software developer</p1>
-    <hr>
-    <p1>2.5 years</p1>
+
+    <div class="blank">
+      
     </div>
 
-    <!-- Vista college software developer.
-    this also includes a link to proof of b1 k1 and b1 k2
-    
+    <footer class="footer">
 
-
-
- 
-    
-    </div>
-
-
-<!-- 
-    <div class="education-item ed-2">
-      <img id="zuyd_hogeschool" class="zuyd-logo" src="assets/images/222px-LogoZUYD.png">
-      <div class="education-info">
-      <p1>Applied data science & Artificial intelligence</p1>
-      <hr>
-      <p1>upcoming sept 2025</p1>
-      </div>
-  
-      Vista college software developer.
-      this also includes a link to proof of b1 k1 and b1 k2
-     
-      </p>
-  
-
-
-    </div> 
-  </div> -->
-
-<!-- 
-    
-    <div class="experience-container">
-      <div class="experiences">
-        <h1>experience</h1>
-
-        <!-- Experience 1: Vista College 
-        <div class="experience">
-          <div class="experience-icon">
-            <img id="vistaLogoex" src="assets/images/vista_logo.png">
-          </div>
-          <div class="experience-details">
-            <h3>Vista college student</h3>
-            <div class="date"><i class="fa fa-calendar"></i> September 2022 - June 2025</div>
-            <h4><i class="fa fa-flag"></i> Netherlands</h4>
-            <p>Studied software development with a focus on web development.</p>
-          </div>
-        </div>
-    
-        <!-- Experience 2: Zuyd Data Intelligence =
-        <div class="experience">
-          <div class="experience-icon">
-            <img src="assets/images/dilab.png">
-          </div>
-          <div class="experience-details">
-            <h3>Zuyd Data Intelligence internship</h3>
-            <div class="date"><i class="fa fa-calendar"></i> April 2024 - December 2024</div>
-            <h4><i class="fa fa-flag"></i> Netherlands</h4>
-            <p>Working on AI-driven solutions, data analytics, and software engineering projects.</p>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-
-    </section>
-    <!-- #endregion =================== -->
-
-
-    <!-- #region Projects Section -->
-   
-  <section id="projects-section">
-    <div class="projects-title title">
-      <h2>PROJECTS</h2>
-      <p>SEE MY WORK</p>
-    </div>
-
-    <div class="projects-container">
-
-      <!-- project 1: portfolio -->
-      <div class="project" id="projectItem">
-        <video autoplay loop muted playsinline src="assets/videos/2025-05-11 04-27-13.mp4"></video>
-        <div class="project-content">
-          <h1>portfolio</h1>
-          <p1>Joyren Terken</p1>
-          <li>
-            <a target="_blank" rel="noopener noreferrer"
-               href="https://github.com/XCrazyCubeX/portfolio">
-              More info
-            </a>
-          </li>
-          <p>Personal portfolio in a rush</p>
-        </div>
-      </div>
-
-      <!-- project 2: C.A.R.L (image) -->
-      <div class="project" id="projectItem2">
-        <video autoplay loop muted playsinline src="assets/videos/2025-05-11 05-34-59.mp4"></video>
-        <div class="project-content">
-          <h1>C.A.R.L</h1>
-          <p1>autonomous vehicle</p1>
-          <li>
-            <a target="_blank" rel="noopener noreferrer"
-               href="https://github.com/XCrazyCubeX/CARL">
-              More info
-            </a>
-          </li>
-          <p>
-            An autonomous vehicle only with distance sensors? Carl can do that… sort of.
-            Trained within a simulation, deployed in real life.
-          </p>
-        </div>
-      </div>
-
-      <!-- project 3: Flappy Bird (image) -->
-      <div class="project" id="projectItem3">
-        <video autoplay loop muted playsinline src="assets/videos/flappy.mp4"></video>
-        <div class="project-content">
-          <h1>Flappy Bird</h1>
-          <p1>reinforcement learning agent</p1>
-          <li>
-            <a target="_blank" rel="noopener noreferrer"
-               href="https://github.com/XCrazyCubeX/Flappybird-Reinforcement-learning">
-              More info
-            </a>
-          </li>
-          <p>
-            Flappy Bird AI agent, using gymnasium and stablebaselines3.
-            Trained for 40+ hours, topping out around a 340 high score.
-          </p>
-        </div>
-      </div>
-
-      <!-- project 4: Windows95 -->
-      <div class="project" id="projectItem4">
-        <video autoplay loop muted playsinline src="assets/videos/2025-05-11 04-34-00.mp4"></video>
-        <div class="project-content">
-          <h1>Windows95</h1>
-          <p1>on solana</p1>
-          <li>
-            <a target="_blank" rel="noopener noreferrer"
-               href="https://windows95onsol.com">
-              More info
-            </a>
-          </li>
-          <p>A project me and a friend worked on</p>
-        </div>
-      </div>
-
-      <!-- project 5: My assessment -->
-      <div class="project" id="projectItem5">
-        <video autoplay loop muted playsinline src="assets/videos/2025-05-11 04-32-30.mp4"></video>
-        <div class="project-content">
-          <h1>My assessment</h1>
-          <p1>Website for my assessment presentations</p1>
-          <li>
-            <a target="_blank" rel="noopener noreferrer" href="">
-              More info
-            </a>
-          </li>
-          <p>
-            Made with care to show off my skills during all assessments of my second school year.
-          </p>
-        </div>
-      </div>
-
-      <!-- project 6: Maatwerk -->
-      <div class="project" id="projectItem6">
-        <video autoplay loop muted playsinline src="assets/videos/2025-05-09 22-55-34.mp4"></video>
-        <div class="project-content">
-          <h1>Maatwerk</h1>
-          <p1>Website made for my maatwerk presentation</p1>
-          <li>
-            <a target="_blank" rel="noopener noreferrer"
-               href="">
-              More info
-            </a>
-          </li>
-          <p>
-            This website was used for my presentation on why I would be eligible for a maatwerk procedure.
-          </p>
-        </div>
-      </div>
-
-      <!-- project 7: todo-dashboard -->
-      <div class="project" id="projectItem7">
-        <video autoplay loop muted playsinline src="assets/videos/2025-05-11 04-30-51.mp4"></video>
-        <div class="project-content">
-          <h1>todo-dashboard</h1>
-          <p1>cute non-finished side project</p1>
-          <li>
-            <a target="_blank" rel="noopener noreferrer"
-               href="">
-              More info
-            </a>
-          </li>
-          <p>
-            A todo dashboard to keep track of tasks; includes user login with Google Auth.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-    <!-- #endregion =================== -->
-
-
-    <!-- #region Contact Section -->
-    <section id="contact-section" class="section">
-    <div class="about-title title">
-    <h2>WANT TO REACH OUT?</h2>
-    <p>HERE ARE MY SOCIALS</p>
-
-
-
-    </div>
-
-    <div class="email">
-    <li><a>officialjoy04@gmail.com</a>
-    </div>
-
-    </section>
-
-    <!-- Hamburger Menu Content -->
-    <div class="menu-overlay" id="menu-overlay">
-    <div class="menu-blur" id="menu-blur"></div>
-    <!-- Menu Items -->
-    <div class="menu-item item-1" id="nav-home" style="--i: 1;"><a>Home</a></div>
-    <div class="menu-item item-2" id="nav-about" style="--i: 2;">About</div>
-    <div class="menu-item item-3" id="nav-projects" style="--i: 3;">Projects</div>
-    <div class="menu-item item-4" id="nav-contact" style="--i: 4;">Contact</div>
-    </div>
-
-    <!--#endregion -->
-
+    </footer>
     </main>
-
-    <!-- #endregion -->
     </body>
     </html>
