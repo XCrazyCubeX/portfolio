@@ -339,8 +339,8 @@ document.addEventListener("DOMContentLoaded", () => {
         stagger: 0.06,
         scrollTrigger: {
           trigger: container,
-          start: "top 50%",
-          end: "bottom 5%",
+          start: "top 10%",
+          end: "bottom 30%",
           scrub: 0.5
         }
       });
@@ -353,7 +353,5 @@ document.addEventListener("DOMContentLoaded", () => {
       smooth: 1.2,
       smoothTouch: 0.1
     });
-    
-    ScrollTrigger.refresh();
 
-  });
+  })

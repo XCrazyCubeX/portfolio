@@ -100,8 +100,8 @@ TODO:
   }
   /* Make the home section visible by default */
   #home-section {
-
-    pointer-events: auto;
+    position: relative;
+    z-index: 1;
   }
   
   /* Fade-in class for sections */
@@ -144,14 +144,12 @@ TODO:
   
 .social-icons {
   width: 100dvw;
-  height: 100vh;
   position: absolute;
   display: flex;
   flex-direction: row;
   justify-content: center;
   top: 80%;
   transition-duration: 0.4s;
-  z-index: 10000;
 }
 
 .social-icons p {
@@ -344,7 +342,6 @@ TODO:
 
   .header {
     opacity: 0;
-    pointer-events: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -521,11 +518,16 @@ TODO:
   .hero-section {
     position: relative;
     width: 70%;
+    height: auto;
     margin: auto;
     text-align: center;
-    top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .hero-section h1 {
+    position: relative;
+    top: 15vh;
     color: var(--secondary-color);
     font-family: taurus;
     font-weight: 100;
@@ -534,12 +536,15 @@ TODO:
     text-align: center;
   }
   .hero-section h1 span {
+    
     font-family: ss-taurus;
     font-weight: 600;
     color: var(--secondary-color);
     font-size: clamp(30px, 4vw, 5vw);
   }
   .hero-section p {
+        position: relative;
+    top: 15vh;
     margin: 20px 0;
     color: var(--tertiary-color);
     font-family: mono;
@@ -571,7 +576,7 @@ TODO:
 
 
   .navigation {
-    z-index: 1000;
+    z-index: 9999;
     position: relative;
     width: 50dvw;
     margin: auto;
@@ -586,6 +591,7 @@ TODO:
     font-stretch: expanded;
   }
   .nav-link {
+    z-index: 9999;
     color: var(--tertiary-color);
     text-decoration: none;
   }
@@ -932,7 +938,7 @@ img {
 }
 
 .persona-container {
-  z-index:  99;
+  z-index:  9999;
   position:relative;
   width: 100vw;
   height: auto;
@@ -946,7 +952,7 @@ img {
   text-align: center;
   font-weight: 100;
   color: var(--tertiary-color);
-
+  height: 100%;
 }
 
 /* Center the paragraph block and allow normal wrapping */
