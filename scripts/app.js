@@ -39,22 +39,34 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     const heroSection = document.querySelector(".hero-section");
   
-    function scrollToSection(name) {
-      hamburger.classList.remove("active");
-      overlay.classList.remove("active");
-      blurEl.classList.remove("active");
-      const sec = sections[name];
-      if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
-      if (name === "home") {
-        setTimeout(() => {
-          heroSection?.classList.add("animate-slide-in");
-          document.querySelector(".navigation-container")?.classList.add("animate-slide-in");
-        }, 500);
-      } else {
-        heroSection?.classList.remove("animate-slide-in");
-        document.querySelector(".navigation-container")?.classList.remove("animate-slide-in");
-      }
-    }
+function scrollToSection(name) {
+  const sections = {
+    home:     document.getElementById("home-section"),
+    about:    document.getElementById("about-section"),
+    projects: document.getElementById("projects-section"),
+    contact:  document.getElementById("contact-section"),
+  };
+
+
+  // Show the target section
+  const sec = sections[name];
+  sec?.classList.add("visible");
+
+  // Scroll with GSAP or fallback
+  const smoother = ScrollSmoother?.get();
+  if (sec && smoother) {
+    smoother.scrollTo(sec, true, "top");
+  } else if (sec) {
+    sec.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  // Close menu (optional)
+  document.getElementById("menu-icon")?.classList.remove("active");
+  document.getElementById("menu-overlay")?.classList.remove("active");
+  document.getElementById("menu-blur")?.classList.remove("active");
+}
+
+
   
     Object.entries(menuItems).forEach(([key, el]) => {
       el?.addEventListener("click", () => scrollToSection(key));
@@ -301,9 +313,9 @@ document.addEventListener("DOMContentLoaded", () => {
       camera.aspect = innerWidth/innerHeight;
       camera.updateProjectionMatrix();
     });
-  });
-  
-  // —— GSAP-BASED TEXT REVEAL (on window load) —— 
+
+
+    // —— GSAP-BASED TEXT REVEAL (on window load) —— 
   // ———————————————————————————————————————
 
   window.addEventListener("load", () => {
@@ -351,7 +363,98 @@ document.addEventListener("DOMContentLoaded", () => {
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
       smooth: 1.2,
-      smoothTouch: 0.1
+      smoothTouch: 1.2
     });
 
-  })
+    setTimeout(() => {
+  ScrollTrigger.refresh();
+  ScrollSmoother.refresh()
+}, 100);
+  });
+
+gsap.registerPlugin(TextPlugin);
+
+const skillInfoBox = document.querySelector(".skill-info");
+const skillInfoIcon = skillInfoBox.querySelector("i");
+const skillInfoText = skillInfoBox.querySelector("p");
+
+const skillDescriptions = {
+  HTML: "Structure the web like a pro. HTML is the skeleton of all websites.",
+  CSS: "Style it up! CSS turns boring boxes into beautiful buttons.",
+  JS: "Add interactivity and logic with JavaScript — from dropdowns to full apps.",
+  React: "Build reusable UI components with state and superpowers.",
+  "UI/UX": "Design experiences users *love* using. From wireframes to polish.",
+  AI: "Build intelligent systems that learn, adapt, and improve.",
+  Hardware: "Make circuits dance — control the physical world with code.",
+  Git: "Track, share, and manage code history like a time-traveling wizard.",
+  SCRUM: "Collaborate efficiently in agile teams with organized sprints."
+};
+
+document.querySelectorAll(".icon-container-alt").forEach(iconBox => {
+  iconBox.addEventListener("click", () => {
+    const iconEl = iconBox.querySelector("i");
+    const textEl = iconBox.querySelector("span");
+
+    const newIconClass = iconEl.className;
+    const skillName = textEl.textContent;
+    const newText = skillDescriptions[skillName] || skillName;
+
+    // ICON animation: fade out + scale, change class, fade in
+    gsap.to(skillInfoIcon, {
+      opacity: 0,
+      scale: 0.2,
+      duration: 0.1,
+      ease: "power1.out",
+      onComplete: () => {
+        skillInfoIcon.className = newIconClass;
+        gsap.to(skillInfoIcon, {
+          opacity: 1,
+          scale: 1.2,
+          duration: 2,
+          ease: "power1.out"
+        });
+      }
+    });
+
+    // TEXT animation: type effect (scramble style)
+  // TEXT animation: scramble with opacity and scale transition
+gsap.fromTo(skillInfoText,
+  {
+    opacity: 0.01,
+    scale: 0.4,
+  },
+  {
+    text: {
+      value: newText,
+      delimiter: "",
+    },
+    opacity: 1,
+    scale: 1,
+    duration: 2,
+    ease: "power1.out",
+  }
+);
+  });
+
+  const skillBoxes = document.querySelectorAll(".icon-container-alt");
+
+skillBoxes.forEach(iconBox => {
+  iconBox.addEventListener("click", () => {
+    // Remove active-skill from all
+    skillBoxes.forEach(box => box.classList.remove("active-skill"));
+
+    // Add it to the clicked one
+    iconBox.classList.add("active-skill");
+
+    
+})
+})
+});
+
+window.scrollToSection = scrollToSection;
+
+
+  });
+
+
+  

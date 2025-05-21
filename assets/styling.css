@@ -23,10 +23,6 @@ TODO:
 
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
-  
   :root {
     /* LIGHT MODE BY DEFAULT */
     --primary-color: #ffffff;       /* main background (white) */
@@ -58,13 +54,14 @@ TODO:
   }
   
   html, body {
-    scroll-behavior: smooth;
     scrollbar-color: var(--primary-color);
     width: 100dvw;
     background-color: var(--primary-color);
     margin: 0;
     padding: 0;
     height: 100dvh;
+    scroll-snap-type: none !important;
+
   }
 
   html {
@@ -90,27 +87,29 @@ TODO:
     /* No overflow, no position: fixed! */
   }
   
-  /* Hide all sections by default */
-  section {
-    display: none;
-    position: relative;
-    height: 100vh;
-    background-color: transparent;
-    transition: opacity 1s ease, visibility 1s ease;
-  }
+section {
+  opacity: 0;
+  pointer-events: none;
+  position: relative;
+  height: 100vh;
+  background-color: transparent;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+section.visible {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
   /* Make the home section visible by default */
   #home-section {
     position: relative;
     z-index: 1;
+    
   }
   
-  /* Fade-in class for sections */
-  section.visible {
-    display: block;
-    opacity: 1;
-    pointer-events: auto;
-  }
-  
+
   /* Section title styling */
   .title {
     text-align: center;
@@ -731,9 +730,10 @@ TODO:
   /* Correct ID from #about-secion -> #about-section (if needed) */
   #about-section {
     position: relative;
+    z-index: 999;
     width: 100vw;
     height: max-content;
-      background-color: transparent;
+    background-color: var(--primary-color);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   }
@@ -746,8 +746,7 @@ TODO:
     color: var(--tertiary-color);
     font-family: ss-taurus;
     font-weight: 100;
-    z-index: 0;
-    top: -100px;
+    z-index: -1;
   }
   .about-content-container {
     position: relative;
@@ -755,10 +754,10 @@ TODO:
     width: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: var(--primary-color);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-radius: 6px;
+    border-bottom: 1px solid var(--tertiary-color);
   }
 
 
@@ -788,6 +787,7 @@ img {
   background-color: transparent;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
+  margin-bottom: 150px;
 }
 
 /* Heading */
@@ -825,7 +825,6 @@ img {
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 10;
  
 }
 
@@ -862,7 +861,8 @@ img {
   padding: 10px;
   border-radius: 10px;
   border: 1px solid var(--secondary-color);
-  transition: transform 0.3s ease-in-out;
+  transition: box-shadow 1s ease;
+
 }
 
 
@@ -883,14 +883,14 @@ img {
   font-size: clamp(30px, 1.8vw, 1.8vw);
   margin-bottom: 10px;    /* Space between icon and label */
   display: inline-block;
-  color: var(--secondary-color);
+  
+  color: var(--tertiary-color);
   
 }
 .icon-container-alt svg {
   width: 30% !important;  /* Set desired width */
   height: 30% !important; /* Set desired height */
   min-width: 10px;
-  
   fill: var(--secondary-color) !important; /* Ensure it uses the parent's color */
   color: var(--secondary-color);
 }
@@ -902,11 +902,33 @@ img {
 }
 
 
-
-/* Hover Effect */
-.icon-container-alt:hover {
-  transform: scale(1.1);
+.active-skill {
+  -webkit-box-shadow: inset 0px 0px 105px 45px var(--secondary-color);
+  -moz-box-shadow: inset 0px 0px 105px 45px var(--secondary-color);
+  box-shadow: inset 0px 0px 105px 45px var(--secondary-color);
+  transition: box-shadow 0.3s ease;
 }
+
+/* Fixing mobile visibility */
+@media screen and (max-width: 600px) {
+  .active-skill {
+    -webkit-box-shadow:inset 0px 0px 40px 10px var(--secondary-color);
+    -moz-box-shadow:inset 0px 0px 40px 10px var(--secondary-color);
+    box-shadow:inset 0px 0px 40px 10px var(--secondary-color);
+  }
+
+  .icon-container-alt:hover {
+    box-shadow:inset 0px 0px 40px 10px var(--secondary-color);
+  }
+}
+
+/* Hover only when not active (to avoid clash) */
+.icon-container-alt:hover:not(.active-skill) {
+  -webkit-box-shadow: inset 0px 0px 105px 45px var(--secondary-color);
+  -moz-box-shadow: inset 0px 0px 105px 45px var(--secondary-color);
+  box-shadow: inset 0px 0px 105px 45px var(--secondary-color);
+}
+
 
 /* Keyframe Animations for continuous marquee */
 @keyframes marquee-horizontal {
@@ -938,7 +960,6 @@ img {
 }
 
 .persona-container {
-  z-index:  9999;
   position:relative;
   width: 100vw;
   height: auto;
@@ -968,6 +989,39 @@ img {
   /* no white-space rules here—let the container handle wrapping */
 }
 
+
+.skill-info {
+  position: relative;
+  margin-top: 100px;
+  width: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-50%);
+  left: 50%;
+    transition: all 1s ease;
+    
+
+}
+
+.skill-info i   {
+  font-size: clamp(40px, 3.8vw, 4.8vw);
+  color: var(--tertiary-color);
+  transition: all 1s ease;
+  margin-bottom:50px;
+}
+
+.skill-info p {
+  margin-top: 3vh;
+  font-size: clamp(30px, 4vw, 4vw);
+  font-family: mono;
+  text-align: center;
+  font-weight: 100;
+  color: var(--tertiary-color);
+  height: 100%;
+  margin-bottom: 100px;
+
+}
 
 .blank {
   background-color: transparent;
