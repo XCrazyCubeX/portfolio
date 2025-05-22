@@ -22,60 +22,59 @@ document.addEventListener("DOMContentLoaded", () => {
     // —— HAMBURGER MENU & NAVIGATION —— 
     // ———————————————————————————————————————
 
-    const hamburger = document.getElementById("menu-icon");
-    const overlay   = document.getElementById("menu-overlay");
-    const blurEl    = document.getElementById("menu-blur");
-    const menuItems = {
-      home:     document.getElementById("nav-home"),
-      about:    document.getElementById("nav-about"),
-      projects: document.getElementById("nav-projects"),
-      contact:  document.getElementById("nav-contact"),
-    };
-    const sections = {
-      home:     document.getElementById("home-section"),
-      about:    document.getElementById("about-section"),
-      projects: document.getElementById("projects-section"),
-      contact:  document.getElementById("contact-section"),
-    };
-    const heroSection = document.querySelector(".hero-section");
-  
-function scrollToSection(name) {
-  const sections = {
-    home:     document.getElementById("home-section"),
-    about:    document.getElementById("about-section"),
-    projects: document.getElementById("projects-section"),
-    contact:  document.getElementById("contact-section"),
-  };
+const hamburger = document.getElementById("menu-icon");
+const overlay   = document.getElementById("menu-overlay");
+const blurEl    = document.getElementById("menu-blur");
 
+// Nav menu items & sections (map by key)
+const menuItems = {
+  home:     document.getElementById("nav-home"),
+  about:    document.getElementById("nav-about"),
+  projects: document.getElementById("nav-projects"),
+  contact:  document.getElementById("nav-contact"),
+};
+const sections = {
+  home:     document.getElementById("home-section"),
+  about:    document.getElementById("about-section"),
+  projects: document.getElementById("projects-section"),
+  contact:  document.getElementById("contact-section"),
+};
 
-  // Show the target section
-  const sec = sections[name];
-  sec?.classList.add("visible");
+function scrollToSection(key) {
+  const targetSection = sections[key];
+  if (!targetSection) return;
 
-  // Scroll with GSAP or fallback
-  const smoother = ScrollSmoother?.get();
-  if (sec && smoother) {
-    smoother.scrollTo(sec, true, "top");
-  } else if (sec) {
-    sec.scrollIntoView({ behavior: "smooth", block: "start" });
+  // Make section visible (if you need this)
+  targetSection.classList.add("visible");
+
+  // Prefer ScrollSmoother, fallback to native smooth scroll
+  const smoother = window.ScrollSmoother?.get && window.ScrollSmoother.get();
+  if (smoother) {
+    smoother.scrollTo(targetSection, true, "top");
+  } else {
+    targetSection.scrollIntoView({ behavior: "smooth", block: "start", duration: 2 });
   }
 
-  // Close menu (optional)
-  document.getElementById("menu-icon")?.classList.remove("active");
-  document.getElementById("menu-overlay")?.classList.remove("active");
-  document.getElementById("menu-blur")?.classList.remove("active");
+  // Always close menu (if mobile overlay is open)
+  hamburger?.classList.remove("active");
+  overlay?.classList.remove("active");
+  blurEl?.classList.remove("active");
 }
 
+// Bind click handlers for all menu items
+Object.entries(menuItems).forEach(([key, el]) => {
+  if (el) {
+    el.addEventListener("click", () => scrollToSection(key));
+  }
+});
 
-  
-    Object.entries(menuItems).forEach(([key, el]) => {
-      el?.addEventListener("click", () => scrollToSection(key));
-    });
-    hamburger?.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      overlay?.classList.toggle("active");
-      blurEl?.classList.toggle("active");
-    });
+// Hamburger icon toggles menu open/close
+hamburger?.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  overlay?.classList.toggle("active");
+  blurEl?.classList.toggle("active");
+});
+
   
     // —— PARALLAX & SCROLL EFFECTS —— 
     // ———————————————————————————————————————
@@ -325,43 +324,58 @@ function scrollToSection(name) {
     }
     gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 
-    // Project cards + indicator logic
-    const cards = gsap.utils.toArray(".project-card");
-    const indicatorEl = document.querySelector(".project-indicator h1");
-    const totalScroll = window.innerHeight * cards.length;
-    let lastIndex = 1;
+// Project cards + indicator logic
+const cards = gsap.utils.toArray(".project-card");
+const indicatorEl = document.querySelector(".project-indicator h1");
+const totalScroll = window.innerHeight * cards.length;
+let lastIndex = 1;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        scroller: "#smooth-wrapper",
-        trigger: "#projects-section",
-        start: "top top",
-        end: `+=${totalScroll}`,
-        scrub: 1,
-        pin: true,
-        pinSpacing: true,
-        onUpdate(self) {
-          const raw = self.progress * cards.length;
-          const idx = Math.min(cards.length, Math.floor(raw) + 1);
-          if (idx !== lastIndex) {
-            lastIndex = idx;
-            gsap.to(indicatorEl, {
-              y: -20,
-              opacity: 0,
-              duration: 0.15,
-              ease: "power1.in",
-              onComplete: () => {
-                indicatorEl.textContent = idx;
-                gsap.fromTo(indicatorEl,
-                  { y: 20, opacity: 0 },
-                  { y: 0, opacity: 1, duration: 0.22, ease: "power1.out" }
-                );
-              }
-            });
+function setActiveCard(index) {
+  cards.forEach((card, i) => {
+    card.classList.toggle('active-card', i === index);
+  });
+}
+
+const tl = gsap.timeline({
+  scrollTrigger: {
+    scroller: "#smooth-wrapper",
+    trigger: "#projects-section",
+    start: "top top",
+    end: `+=${totalScroll}`,
+    scrub: 1,
+    pin: true,
+    pinSpacing: true,
+    onUpdate(self) {
+      const raw = self.progress * cards.length;
+      const idx = Math.min(cards.length, Math.floor(raw) + 1);
+
+      // Card index (array is 0-based)
+      const cardIndex = idx - 1;
+
+      // 👇 Update the active card
+      setActiveCard(cardIndex);
+
+      // 👇 Animate indicator only if number changes
+      if (idx !== lastIndex) {
+        lastIndex = idx;
+        gsap.to(indicatorEl, {
+          y: -20,
+          opacity: 0,
+          duration: 0.15,
+          ease: "power1.in",
+          onComplete: () => {
+            indicatorEl.textContent = idx;
+            gsap.fromTo(indicatorEl,
+              { y: 20, opacity: 0 },
+              { y: 0, opacity: 1, duration: 0.22, ease: "power1.out" }
+            );
           }
-        }
+        });
       }
-    });
+    }
+  }
+});
+
 
     cards.forEach((card, i) => {
       tl.to(card, {
@@ -409,7 +423,7 @@ function scrollToSection(name) {
       });
   // Parallax the projects-title down by 200px
   gsap.to(".projects-title", {
-    y: 100,           // move down 200px
+    y: 200,           // move down 200px
     ease: "none",     // linear
     scrollTrigger: {
       trigger: "#projects-section",

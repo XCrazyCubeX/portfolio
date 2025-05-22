@@ -366,11 +366,13 @@ section.visible {
   }
 
 
+
+
   .logo {
     pointer-events: all;
     z-index: 1000;
     position: relative;
-    width: 8vw;
+    width: 9vw;
     max-width: 50px;
   height: auto;
   }
@@ -743,7 +745,7 @@ section.visible {
   }
   .about-title {
     position: relative;
-
+    top: -50px;
     transition-duration: 0.1s;
     font-size: clamp(40px, 5vw, 5vw);
     text-transform: uppercase;
@@ -1027,14 +1029,11 @@ img {
 
 }
 
-.projects-section {
 
-}
 
 .projects-title {
   transform: translateY(-200px);
       position: absolute;
-
     transition-duration: 0.1s;
     font-size: clamp(40px, 5vw, 5vw);
     text-transform: uppercase;
@@ -1049,46 +1048,48 @@ img {
     top: 50%;
   transform: translateY(-50%);
       transition-duration: 0.1s;
-    font-size: clamp(40px, 5vw, 5vw);
+    font-size: clamp(70px, 5vw, 5vw);
     text-transform: uppercase;
     color: var(--tertiary-color);
     font-family: ss-taurus;
     font-weight: 100;
     z-index: -1;
+    margin-left: 50px;
 }
 
 /* Projects section is exactly one viewport tall and hides overflow */
 #projects-section {
+
+  width: 100vw;
   position: relative;
   height: 100vh;
   overflow: hidden;
-        background-color: transparent;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+
 }
 
-/* Inner wrapper fills that section */
-.projects {
 
-  position: absolute;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100%;
-}
 
 /* Every card sits centered on top of each other */
 .project-card {
+  background-color: var(--primary-color);
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
-  height: 100%;
+  height: 70%;
   border-radius: 8px;
   overflow: hidden;            /* clip anything outside the rounded corners */
+  border: solid 1px var(--tertiary-color);
+}
+
+
+.project-card.active-card {
+-webkit-box-shadow: 0px 5px 50px -18px var(--tertiary-color); 
+box-shadow: 0px 5px 50px -18px var(--tertiary-color);
 }
 
 .project-card video {
-    scale: 0.7;;
+    scale: 1;;
 
   position: absolute;
   top:    0;
@@ -1099,6 +1100,28 @@ img {
   object-position: center;     /* center letterbox if aspect‐ratio differs */
 }
 
+.project-card .blur-bg {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  top: 0; left: 0;
+  filter: blur(2px) brightness(0.7) saturate(1.5);
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.project-card video:not(.blur-bg) {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: fit;
+  object-position: center;
+  /* Optionally add a border or shadow here */
+}
+
+
 @media screen and (max-width: 600px) {
 
   .project-card video {
@@ -1106,9 +1129,9 @@ img {
   }
 
   .project-indicator h1 {
-      top: 70%; left: 50%;
+      top: 92%; left: 50%;
   transform: translate(-50%, -50%);
-
+margin: 0;
   }
   
 }
@@ -1151,16 +1174,6 @@ img {
     color: var(--secondary-color);
     font-family: ss-taurus;
     width: 20%;
-  }
-  
-  /* Media query adjustments */
-  @media (max-width: 600px) {
-    .logo {
-      transform: translateX(-30px);
-    }
-    .header-right {
-      right: 15%;
-    }
   }
 
 
