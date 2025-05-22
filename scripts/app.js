@@ -3,34 +3,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     
 
-// —— CUSTOM CURSOR —— 
-const cursor = document.querySelector(".custom-cursor");
-if (cursor) {
-  // Hide custom cursor on touch devices
-  function hideCursorOnTouch() {
-    cursor.style.display = "none";
-    document.body.style.cursor = "default";
-    // Remove event listeners (optional, for cleanliness)
-    window.removeEventListener("touchstart", hideCursorOnTouch, false);
-  }
-  // Detect touch once
-  window.addEventListener("touchstart", hideCursorOnTouch, false);
-
-  // Normal custom cursor logic for non-touch devices
-  cursor.style.opacity = "1";
-  document.querySelectorAll("a").forEach(link => {
-    link.addEventListener("mouseover", () => cursor.classList.add("custom-cursor--link"));
-    link.addEventListener("mouseout",  () => cursor.classList.remove("custom-cursor--link"));
-  });
-  window.addEventListener("mousemove", e => {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top  = e.clientY + "px";
-  });
-  window.addEventListener("mouseout",  () => cursor.style.opacity = "0");
-  window.addEventListener("mouseover", () => cursor.style.opacity = "1");
-}
-
-
+    // —— CUSTOM CURSOR —— 
+    const cursor = document.querySelector(".custom-cursor");
+    if (cursor) {
+      cursor.style.opacity = "1";
+      document.querySelectorAll("a").forEach(link => {
+        link.addEventListener("mouseover", () => cursor.classList.add("custom-cursor--link"));
+        link.addEventListener("mouseout",  () => cursor.classList.remove("custom-cursor--link"));
+      });
+      window.addEventListener("mousemove", e => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top  = e.clientY + "px";
+      });
+      window.addEventListener("mouseout",  () => cursor.style.opacity = "0");
+      window.addEventListener("mouseover", () => cursor.style.opacity = "1");
+    }
   
     // —— HAMBURGER MENU & NAVIGATION —— 
     // ———————————————————————————————————————
@@ -337,47 +324,54 @@ hamburger?.addEventListener("click", () => {
     }
     gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 
-// Project cards + indicator logic
 const cards = gsap.utils.toArray(".project-card");
 const indicatorEl = document.querySelector(".project-indicator h1");
-const totalScroll = window.innerHeight * cards.length;
+const totalCards = cards.length;
 let lastIndex = 1;
 
-function setActiveCard(index) {
+// Helper: Make only one card "active" for box shadow (top card)
+function setActiveCard(idx) {
   cards.forEach((card, i) => {
-    card.classList.toggle('active-card', i === index);
+    card.classList.toggle('active-card', i === idx);
   });
 }
 
-const tl = gsap.timeline({
+// Timeline controls all card movement via progress
+gsap.timeline({
   scrollTrigger: {
     scroller: "#smooth-wrapper",
     trigger: "#projects-section",
     start: "top top",
-    end: `+=${totalScroll}`,
-    scrub: 1,
+    end: `+=${window.innerHeight * totalCards}`,
+    scrub: 0.9,
     pin: true,
     pinSpacing: true,
     onUpdate(self) {
-      const raw = self.progress * cards.length;
-      const idx = Math.min(cards.length, Math.floor(raw) + 1);
+      // Progress is 0...1, map to card index (floating point)
+      const prog = self.progress * (totalCards - 1);
+      // For each card, slide it up based on its position in the stack
+      cards.forEach((card, i) => {
+        let offset = Math.max(0, prog - i);
+        gsap.set(card, {
+          y: -offset * window.innerHeight,
+          zIndex: totalCards - i,
+          opacity: (offset > 1) ? 0 : 1 // hide once fully up
+        });
+      });
+      // Figure out which card is now active
+      const idx = Math.min(totalCards - 1, Math.round(prog));
+      setActiveCard(idx);
 
-      // Card index (array is 0-based)
-      const cardIndex = idx - 1;
-
-      // 👇 Update the active card
-      setActiveCard(cardIndex);
-
-      // 👇 Animate indicator only if number changes
-      if (idx !== lastIndex) {
-        lastIndex = idx;
+      // Animate the indicator
+      if (idx + 1 !== lastIndex) {
+        lastIndex = idx + 1;
         gsap.to(indicatorEl, {
           y: -20,
           opacity: 0,
           duration: 0.15,
           ease: "power1.in",
           onComplete: () => {
-            indicatorEl.textContent = idx;
+            indicatorEl.textContent = lastIndex;
             gsap.fromTo(indicatorEl,
               { y: 20, opacity: 0 },
               { y: 0, opacity: 1, duration: 0.22, ease: "power1.out" }
@@ -389,17 +383,9 @@ const tl = gsap.timeline({
   }
 });
 
+// Set initial active card for shadow
+setActiveCard(0);
 
-    cards.forEach((card, i) => {
-      tl.to(card, {
-        y: -50,
-        ease: "power2.out"
-      }, i * 0.5)
-      .to(card, {
-        y: -window.innerHeight,
-        ease: "power2.inOut"
-      }, i * 0.5 + 0.5);
-    });
   
     // — TEXT REVEAL SETUP —
     const container = document.querySelector(".persona-container");
@@ -436,7 +422,7 @@ const tl = gsap.timeline({
       });
   // Parallax the projects-title down by 200px
   gsap.to(".projects-title", {
-    y: 200,           // move down 200px
+    y: 0,           // move down 200px
     ease: "none",     // linear
     scrollTrigger: {
       trigger: "#projects-section",
