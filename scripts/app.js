@@ -3,21 +3,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     
 
-    // —— CUSTOM CURSOR —— 
-    const cursor = document.querySelector(".custom-cursor");
-    if (cursor) {
-      cursor.style.opacity = "1";
-      document.querySelectorAll("a").forEach(link => {
-        link.addEventListener("mouseover", () => cursor.classList.add("custom-cursor--link"));
-        link.addEventListener("mouseout",  () => cursor.classList.remove("custom-cursor--link"));
-      });
-      window.addEventListener("mousemove", e => {
-        cursor.style.left = e.clientX + "px";
-        cursor.style.top  = e.clientY + "px";
-      });
-      window.addEventListener("mouseout",  () => cursor.style.opacity = "0");
-      window.addEventListener("mouseover", () => cursor.style.opacity = "1");
-    }
+// —— CUSTOM CURSOR —— 
+const cursor = document.querySelector(".custom-cursor");
+if (cursor) {
+  // Hide custom cursor on touch devices
+  function hideCursorOnTouch() {
+    cursor.style.display = "none";
+    document.body.style.cursor = "default";
+    // Remove event listeners (optional, for cleanliness)
+    window.removeEventListener("touchstart", hideCursorOnTouch, false);
+  }
+  // Detect touch once
+  window.addEventListener("touchstart", hideCursorOnTouch, false);
+
+  // Normal custom cursor logic for non-touch devices
+  cursor.style.opacity = "1";
+  document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("mouseover", () => cursor.classList.add("custom-cursor--link"));
+    link.addEventListener("mouseout",  () => cursor.classList.remove("custom-cursor--link"));
+  });
+  window.addEventListener("mousemove", e => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top  = e.clientY + "px";
+  });
+  window.addEventListener("mouseout",  () => cursor.style.opacity = "0");
+  window.addEventListener("mouseover", () => cursor.style.opacity = "1");
+}
+
+
   
     // —— HAMBURGER MENU & NAVIGATION —— 
     // ———————————————————————————————————————
