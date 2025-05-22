@@ -19,7 +19,6 @@ TODO:
     margin: 0;
     padding: 0;
     cursor: none;
-    transition-duration: 0.5s;
 
   }
 
@@ -59,7 +58,7 @@ TODO:
     background-color: var(--primary-color);
     margin: 0;
     padding: 0;
-    height: 100dvh;
+
     scroll-snap-type: none !important;
 
   }
@@ -76,14 +75,17 @@ TODO:
   }
 
   #smooth-wrapper {
-    width: 100vw;
-    min-height: 100vh;
-    overflow: hidden;
-    position: relative;
+  position: fixed;    /* pin it to the viewport */
+  top:    0;
+  left:   0;
+  width:  100%;
+  height: 100%;
+  overflow-y: scroll; /* allow vertical scroll here only */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
   }
   #smooth-content {
     width: 100%;
-    min-height: 100vh;
+    min-height: 200vh;
     /* No overflow, no position: fixed! */
   }
   

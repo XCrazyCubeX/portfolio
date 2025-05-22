@@ -351,8 +351,8 @@ function scrollToSection(name) {
         stagger: 0.06,
         scrollTrigger: {
           trigger: container,
-          start: "top 10%",
-          end: "bottom 30%",
+          start: "top 50%",
+          end: "bottom 40%",
           scrub: 0.5
         }
       });
@@ -362,8 +362,8 @@ function scrollToSection(name) {
     ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
-      smooth: 1.2,
-      smoothTouch: 1.2
+      smooth: 2,
+      smoothTouch: 1
     });
 
     setTimeout(() => {
@@ -421,7 +421,6 @@ document.querySelectorAll(".icon-container-alt").forEach(iconBox => {
 gsap.fromTo(skillInfoText,
   {
     opacity: 0.01,
-    scale: 0.4,
   },
   {
     text: {
@@ -429,7 +428,6 @@ gsap.fromTo(skillInfoText,
       delimiter: "",
     },
     opacity: 1,
-    scale: 1,
     duration: 2,
     ease: "power1.out",
   }
