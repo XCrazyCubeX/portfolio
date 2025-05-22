@@ -324,6 +324,55 @@ function scrollToSection(name) {
       return;
     }
     gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
+
+    // Project cards + indicator logic
+    const cards = gsap.utils.toArray(".project-card");
+    const indicatorEl = document.querySelector(".project-indicator h1");
+    const totalScroll = window.innerHeight * cards.length;
+    let lastIndex = 1;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        scroller: "#smooth-wrapper",
+        trigger: "#projects-section",
+        start: "top top",
+        end: `+=${totalScroll}`,
+        scrub: 1,
+        pin: true,
+        pinSpacing: true,
+        onUpdate(self) {
+          const raw = self.progress * cards.length;
+          const idx = Math.min(cards.length, Math.floor(raw) + 1);
+          if (idx !== lastIndex) {
+            lastIndex = idx;
+            gsap.to(indicatorEl, {
+              y: -20,
+              opacity: 0,
+              duration: 0.15,
+              ease: "power1.in",
+              onComplete: () => {
+                indicatorEl.textContent = idx;
+                gsap.fromTo(indicatorEl,
+                  { y: 20, opacity: 0 },
+                  { y: 0, opacity: 1, duration: 0.22, ease: "power1.out" }
+                );
+              }
+            });
+          }
+        }
+      }
+    });
+
+    cards.forEach((card, i) => {
+      tl.to(card, {
+        y: -50,
+        ease: "power2.out"
+      }, i * 0.5)
+      .to(card, {
+        y: -window.innerHeight,
+        ease: "power2.inOut"
+      }, i * 0.5 + 0.5);
+    });
   
     // — TEXT REVEAL SETUP —
     const container = document.querySelector(".persona-container");
@@ -355,8 +404,22 @@ function scrollToSection(name) {
           end: "bottom 40%",
           scrub: 0.5
         }
+
+        
       });
+  // Parallax the projects-title down by 200px
+  gsap.to(".projects-title", {
+    y: 100,           // move down 200px
+    ease: "none",     // linear
+    scrollTrigger: {
+      trigger: "#projects-section",
+      start: "top bottom",   // when top of section hits bottom of viewport
+      end: "bottom top",     // when bottom of section hits top of viewport
+      scrub: true            // tie animation to scrollbar
     }
+  });
+      
+}
   
     // — SCROLLSMOOTHER SETUP —
     ScrollSmoother.create({
