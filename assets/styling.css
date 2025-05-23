@@ -1034,7 +1034,7 @@ img {
 
 
 .projects-title {
-  transform: translateY(-200px);
+  transform: translateY(-100px);
       position: absolute;
     transition-duration: 0.1s;
     font-size: clamp(40px, 5vw, 5vw);
@@ -1050,7 +1050,7 @@ img {
     top: 50%;
   transform: translateY(-50%);
       transition-duration: 0.1s;
-    font-size: clamp(70px, 5vw, 5vw);
+    font-size: clamp(50px, 5vw, 5vw);
     text-transform: uppercase;
     color: var(--tertiary-color);
     font-family: ss-taurus;
@@ -1131,7 +1131,7 @@ box-shadow: 0px 5px 50px -18px var(--tertiary-color);
   }
 
   .project-indicator h1 {
-      top: 92%; left: 50%;
+      top: 95%; left: 50%;
   transform: translate(-50%, -50%);
 margin: 0;
   }
