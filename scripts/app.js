@@ -341,6 +341,7 @@ const cards = gsap.utils.toArray(".project-card");
 const indicatorEl = document.querySelector(".project-indicator h1");
 const totalCards = cards.length;
 let lastIndex = 1;
+cards.forEach(card => gsap.set(card, { y: 0 }));
 
 // Helper: Make only one card "active" for box shadow (top card)
 function setActiveCard(idx) {
@@ -359,6 +360,8 @@ gsap.timeline({
     scrub: 0.9,
     pin: true,
     pinSpacing: true,
+    immediateRender: false,
+
     onUpdate(self) {
       // Progress is 0...1, map to card index (floating point)
       const prog = self.progress * (totalCards - 1);

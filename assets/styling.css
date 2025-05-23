@@ -196,7 +196,8 @@ section.visible {
   height: 48px;
   margin: 0 10px;
   mix-blend-mode: difference;
-
+  fill: var(--tertiary-color);
+  color: var(--tertiary-color);
 }
 
 .icon-link:hover {
@@ -222,7 +223,7 @@ section.visible {
 }
 
 .dark-theme .icon-link {
-  color: var(--secondary-color)
+  color: var(--tertiary-color)
 }
 
   
@@ -1035,7 +1036,7 @@ img {
 
 .projects-title {
   transform: translateY(-100px);
-      position: absolute;
+      position: relative;
     transition-duration: 0.1s;
     font-size: clamp(40px, 5vw, 5vw);
     text-transform: uppercase;
@@ -1065,7 +1066,7 @@ img {
   position: relative;
   height: 100vh;
   overflow: hidden;
-
+  
 }
 
 
@@ -1073,6 +1074,7 @@ img {
 /* Every card sits centered on top of each other */
 .project-card {
   background-color: var(--primary-color);
+  will-change: transform;
   position: absolute;
   top: 20%; left: 50%;
   transform: translate(-50%, -50%);
