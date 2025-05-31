@@ -1076,7 +1076,7 @@ img {
   background-color: var(--primary-color);
   will-change: transform;
   position: absolute;
-  top: 20%; left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
   height: 70%;
