@@ -1035,8 +1035,7 @@ img {
 
 
 .projects-title {
-  transform: translateY(-100px);
-      position: relative;
+    position: relative;
     transition-duration: 0.1s;
     font-size: clamp(40px, 5vw, 5vw);
     text-transform: uppercase;
@@ -1066,6 +1065,7 @@ img {
   position: relative;
   height: 100vh;
   overflow: hidden;
+
   
 }
 
@@ -1076,10 +1076,10 @@ img {
   background-color: var(--primary-color);
   will-change: transform;
   position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
+  left: 50%;
+  transform: translateX(-50%);
   width: 50%;
-  height: 70%;
+  height: 100%;
   border-radius: 8px;
   overflow: hidden;            /* clip anything outside the rounded corners */
   border: solid 1px var(--tertiary-color);
